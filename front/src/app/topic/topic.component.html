@@ -1,1 +1,15 @@
-<p>topic works!</p>
+
+<div class="topic-list-container">
+  <h2>List de Topics</h2>
+  <div>
+    <div *ngFor="let topic of topics">
+      <h3>ID: {{ topic.id }}</h3>
+      <p>Nom du Topic: {{ topic.name }}</p>
+    </div>
+  </div>
+  <div *ngIf="errorMessage">
+    <div class="alert alert-danger" role="alert">
+      <h2>Something went wrong: {{ errorMessage }}</h2>
+    </div>
+  </div>
+</div>
