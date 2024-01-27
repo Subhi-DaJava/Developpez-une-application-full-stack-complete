@@ -20,4 +20,8 @@ public class Topic {
 	
 	@Column(nullable = false)
 	private String name;
+
+	@ManyToOne
+	@JoinColumn(name = "user_id")
+	private User user;
 }
