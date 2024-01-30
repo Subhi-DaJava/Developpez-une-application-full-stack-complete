@@ -6,6 +6,9 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Table(name = "topics")
 @Data
@@ -18,10 +21,12 @@ public class Topic {
 	@Column(name = "topic_id")
 	private Long id;
 	
-	@Column(nullable = false)
+	@Column(nullable = false, unique = true)
 	private String name;
 
-	@ManyToOne
-	@JoinColumn(name = "user_id")
-	private User user;
+	@Column(nullable = false)
+	private String description;
+
+	@OneToMany(mappedBy = "topic")
+	private List<Post> posts = new ArrayList<>();
 }

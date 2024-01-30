@@ -3,11 +3,10 @@ package com.openclassrooms.mddapi.model;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -33,12 +32,15 @@ public class User {
     @Email
     private String email;
 
-    @OneToMany(mappedBy = "user")
-    private List<Post> posts;
+    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
+    private List<Post> posts = new ArrayList<>();
 
-    @OneToMany(mappedBy = "user")
-    private List<Comment> comments;
+    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
+    private List<Comment> comments = new ArrayList<>();
 
-    @OneToMany(mappedBy = "user")
-    private Set<Topic> topics;
+    @ManyToMany
+    @JoinTable(
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "topic_id"))
+    private Set<Topic> topics = new HashSet<>();
 }

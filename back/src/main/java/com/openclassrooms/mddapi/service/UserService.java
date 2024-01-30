@@ -3,6 +3,7 @@ package com.openclassrooms.mddapi.service;
 import com.openclassrooms.mddapi.dto.UserRequest;
 import com.openclassrooms.mddapi.dto.UserResponse;
 import com.openclassrooms.mddapi.exception.EmailAlreadyExistingException;
+import com.openclassrooms.mddapi.exception.FieldShouldNotBeEmptyException;
 import com.openclassrooms.mddapi.exception.ResourceNotFoundException;
 import com.openclassrooms.mddapi.exception.UsernameAlreadyExistingException;
 import com.openclassrooms.mddapi.mapper.UserMapper;
@@ -10,8 +11,10 @@ import com.openclassrooms.mddapi.model.User;
 import com.openclassrooms.mddapi.repository.UserRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
+@Transactional
 @Slf4j
 public class UserService implements IUserService {
 
@@ -35,7 +38,29 @@ public class UserService implements IUserService {
 
     @Override
     public UserResponse addUser(UserRequest userRequest) {
+
+        if (userRequest.getUsername() == null || userRequest.getUsername().isEmpty() ||
+                userRequest.getPassword() == null || userRequest.getPassword().isEmpty() ||
+                userRequest.getEmail() == null || userRequest.getEmail().isEmpty()) {
+            log.error("Field should not be empty");
+            throw new FieldShouldNotBeEmptyException("Field should not be empty");
+        }
+
+        User existingUserByUsername = userRepository.findByUsername(userRequest.getUsername()).orElse(null);
+        User existingUserByEmail = userRepository.findByEmail(userRequest.getEmail()).orElse(null);
+
+        if (existingUserByUsername != null) {
+            log.error("Username already exists in db");
+            throw new UsernameAlreadyExistingException("Username already exists in db");
+        }
+
+        if (existingUserByEmail != null) {
+            log.error("Email already exists in db");
+            throw new EmailAlreadyExistingException("Email already exists in db");
+        }
+
         User user = userMapper.userRequestToUser(userRequest);
+
         User savedUser = userRepository.save(user);
         UserResponse userResponse = userMapper.userToUserResponse(savedUser);
         log.info("User added: {}", userResponse);
