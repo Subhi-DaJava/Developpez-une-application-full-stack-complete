@@ -36,13 +36,31 @@ public class PostController {
     public ResponseEntity<?> getAllPostsSubscribedThemesChronologicallyByUser(@RequestParam(name = "username") String username) {
         List<PostDto> postDtoList = postService.getPostsFromSubscribedThemesChronologically(username);
         if(postDtoList == null) {
-            log.error("Posts not found for user with username: {}", username);
+            log.error("No posts found for the topics to which a user with the username {} is subscribed", username);
             return ResponseEntity.notFound().build();
+        }
+
+        if(postDtoList.isEmpty()) {
+            String errorMessage = "User with username: %s doesn't subscribe any topic: ".formatted(username);
+            log.info(errorMessage);
+           return ResponseEntity.noContent().build();
         }
 
         log.info("Posts successfully retrieved: {}", postDtoList);
 
         return ResponseEntity.ok(postDtoList);
+    }
+
+    @PostMapping
+    public ResponseEntity<?> createPost(@RequestBody PostDto postDto) {
+        PostDto savedPostDto = postService.createPost(postDto);
+        if(savedPostDto == null) {
+            log.error("Post not created");
+            return ResponseEntity.badRequest().build();
+        }
+
+        log.info("Post successfully created: {}", savedPostDto);
+        return ResponseEntity.ok(savedPostDto);
     }
 
 }

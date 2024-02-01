@@ -8,8 +8,8 @@ public interface ITopicService {
 
 	List<TopicDto> getTopics();
 
-	void subscribeToTopic(Long topicId, Long userId);
+	void subscribeToTopic(String topicName, String username);
 
-	void unsubscribeToTopic(Long topicId, Long userId);
+	void unsubscribeToTopic(String topicName, String username);
 
 }

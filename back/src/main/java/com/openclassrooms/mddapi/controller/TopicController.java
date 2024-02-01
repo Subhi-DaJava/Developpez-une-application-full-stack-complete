@@ -5,10 +5,7 @@ import java.util.List;
 import com.openclassrooms.mddapi.dto.TopicDto;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.openclassrooms.mddapi.service.ITopicService;
 
@@ -33,6 +30,20 @@ public class TopicController {
 		}
 		log.info("Topics successfully retrieved from database: {}", topics);
 		return ResponseEntity.ok(topics);
+	}
+
+	@PostMapping("/subscribe")
+	public ResponseEntity<?> subscribeToTopic(@RequestParam(name = "topicName") String topicName, @RequestParam(name = "username") String username) {
+		topicService.subscribeToTopic(topicName, username);
+		log.info("User with username: {} successfully subscribed to topic with name: {}", username, topicName);
+		return ResponseEntity.ok().build();
+	}
+
+	@PostMapping("/unsubscribe")
+	public ResponseEntity<?> unsubscribeToTopic(@RequestParam(name = "topicName") String topicName, @RequestParam(name = "username") String username) {
+		topicService.unsubscribeToTopic(topicName, username);
+		log.info("User with username: {} successfully unsubscribed to topic with name: {}", username, topicName);
+		return ResponseEntity.ok().build();
 	}
 
 }
