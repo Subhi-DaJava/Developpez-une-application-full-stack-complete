@@ -1,6 +1,7 @@
 package com.openclassrooms.mddapi.controller;
 
 import com.openclassrooms.mddapi.dto.PostDto;
+import com.openclassrooms.mddapi.dto.PostDtoLight;
 import com.openclassrooms.mddapi.service.PostService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
@@ -34,7 +35,7 @@ public class PostController {
 
     @GetMapping
     public ResponseEntity<?> getAllPostsSubscribedThemesChronologicallyByUser(@RequestParam(name = "username") String username) {
-        List<PostDto> postDtoList = postService.getPostsFromSubscribedThemesChronologically(username);
+        List<PostDtoLight> postDtoList = postService.getPostsFromSubscribedThemesChronologically(username);
         if(postDtoList == null) {
             log.error("No posts found for the topics to which a user with the username {} is subscribed", username);
             return ResponseEntity.notFound().build();

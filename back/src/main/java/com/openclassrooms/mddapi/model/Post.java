@@ -29,7 +29,7 @@ public class Post {
 	@JoinColumn(name = "topic_id")
 	private Topic topic;
 
-	@OneToMany(mappedBy = "post", fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "post")
 	private List<Comment> comments = new ArrayList<>();
 
 	private String title;

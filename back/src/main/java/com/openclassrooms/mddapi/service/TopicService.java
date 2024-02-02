@@ -5,6 +5,8 @@ import java.util.List;
 import com.openclassrooms.mddapi.dto.TopicDto;
 import com.openclassrooms.mddapi.exception.FieldShouldNotBeEmptyException;
 import com.openclassrooms.mddapi.exception.ResourceNotFoundException;
+import com.openclassrooms.mddapi.exception.UserAlreadySubscribeToTopicException;
+import com.openclassrooms.mddapi.exception.UserNotSubscribeToTopicException;
 import com.openclassrooms.mddapi.mapper.TopicMapper;
 import com.openclassrooms.mddapi.model.User;
 import com.openclassrooms.mddapi.repository.UserRepository;
@@ -58,7 +60,8 @@ public class TopicService implements ITopicService {
 			log.info("User with username {} successfully subscribed to topic with name: {}", username, topicName);
 			userRepository.save(user);
 		} else {
-			log.info("User with username {} is already subscribed to topic with name: {}", username, topicName);
+			log.error("User with username {} is already subscribed to topic with name: {}", username, topicName);
+			throw new UserAlreadySubscribeToTopicException("User already subscribed to topic");
 		}
 
 	}
@@ -77,7 +80,8 @@ public class TopicService implements ITopicService {
 			log.info("User with username {} successfully unsubscribed to topic with name: {}", username, topicName);
 			userRepository.save(user);
 		} else {
-			log.info("User with username {} is not subscribed to topic with name: {}", username, topicName);
+			log.error("User with username {} is not subscribed to topic with name: {}", username, topicName);
+			throw new UserNotSubscribeToTopicException("User not subscribed to topic");
 		}
 
 	}

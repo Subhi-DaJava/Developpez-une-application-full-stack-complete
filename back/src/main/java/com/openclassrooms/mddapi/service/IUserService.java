@@ -7,8 +7,8 @@ import com.openclassrooms.mddapi.exception.UsernameAlreadyExistingException;
 
 public interface IUserService {
 
-    UserResponse getUserById(Long id);
+    UserResponse getUserByUserName(String username);
     UserResponse addUser(UserRequest userRequest);
-    void updateUser(Long id, UserRequest userRequest) throws UsernameAlreadyExistingException, EmailAlreadyExistingException;
+    void updateUser(String username, UserRequest userRequest) throws UsernameAlreadyExistingException, EmailAlreadyExistingException;
 
 }

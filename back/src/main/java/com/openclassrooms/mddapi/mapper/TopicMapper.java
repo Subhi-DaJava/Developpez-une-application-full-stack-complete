@@ -11,8 +11,5 @@ public interface TopicMapper {
 
     TopicDto topicToTopicDto(Topic topic);
 
-    Topic topicDtoToTopic(TopicDto topicDto);
-
-    List<Topic> topicDtosToTopics(List<TopicDto> topicDtos);
     List<TopicDto> topicsToTopicDtos(List<Topic> topics);
 }

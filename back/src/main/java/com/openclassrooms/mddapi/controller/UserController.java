@@ -18,12 +18,12 @@ public class UserController {
         this.userService = userService;
     }
 
-    @GetMapping("/{id}")
-    ResponseEntity<?> getUserById(@PathVariable(name = "id") Long userId) {
-        UserResponse userResponse = userService.getUserById(userId);
-        if(userResponse == null || userResponse.getId() == null) {
+    @GetMapping("/{username}")
+    ResponseEntity<?> getUserById(@PathVariable(name = "username") String username) {
+        UserResponse userResponse = userService.getUserByUserName(username);
+        if(userResponse == null || userResponse.getUsername() == null) {
             log.error("User not found in database");
-            return ResponseEntity.badRequest().body("User not found");
+            return ResponseEntity.badRequest().body("User not found with username:{%s}".formatted(username));
         }
         log.info("User successfully retrieved from database: {}", userResponse);
         return ResponseEntity.ok(userResponse);
@@ -33,7 +33,7 @@ public class UserController {
     ResponseEntity<?> addUser(@RequestBody UserRequest userResponse) {
         UserResponse userCreated = userService.addUser(userResponse);
 
-        if(userCreated == null || userCreated.getId() == null) {
+        if(userCreated == null || userCreated.getUsername() == null){
             log.error("User not added to database");
             return ResponseEntity.badRequest().body("User not added");
         }
@@ -41,9 +41,9 @@ public class UserController {
         return ResponseEntity.ok(userCreated);
     }
 
-    @PutMapping("/{id}")
-    ResponseEntity<?> updateUser(@PathVariable(name = "id") Long userId, @RequestBody UserRequest userRequest) {
-        userService.updateUser(userId, userRequest);
+    @PutMapping("/{username}")
+    ResponseEntity<?> updateUser(@PathVariable(name = "username") String username, @RequestBody UserRequest userRequest) {
+        userService.updateUser(username, userRequest);
         log.info("User successfully updated in database");
         return ResponseEntity.ok().build();
     }

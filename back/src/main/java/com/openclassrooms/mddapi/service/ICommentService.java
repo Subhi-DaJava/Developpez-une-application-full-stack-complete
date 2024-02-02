@@ -5,6 +5,4 @@ import com.openclassrooms.mddapi.dto.CommentDto;
 public interface ICommentService {
 
     CommentDto createComment(CommentDto commentDto);
-
-    CommentDto getCommentById(Long commentId);
 }

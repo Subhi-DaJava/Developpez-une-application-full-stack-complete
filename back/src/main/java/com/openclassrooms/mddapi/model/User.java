@@ -32,10 +32,10 @@ public class User {
     @Email
     private String email;
 
-    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "user")
     private List<Post> posts = new ArrayList<>();
 
-    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "user")
     private List<Comment> comments = new ArrayList<>();
 
     @ManyToMany

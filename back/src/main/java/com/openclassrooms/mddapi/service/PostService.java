@@ -1,6 +1,7 @@
 package com.openclassrooms.mddapi.service;
 
 import com.openclassrooms.mddapi.dto.PostDto;
+import com.openclassrooms.mddapi.dto.PostDtoLight;
 import com.openclassrooms.mddapi.exception.FieldShouldNotBeEmptyException;
 import com.openclassrooms.mddapi.exception.ResourceNotFoundException;
 import com.openclassrooms.mddapi.mapper.PostMapper;
@@ -15,6 +16,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Set;
 
@@ -76,7 +78,7 @@ public class PostService implements IPostService {
 	}
 
 	@Override
-	public List<PostDto> getPostsFromSubscribedThemesChronologically(String username) {
+	public List<PostDtoLight> getPostsFromSubscribedThemesChronologically(String username) {
 		User user = retrieveUserByUsername(username);
 
 		Set<Topic> topics = user.getTopics();
@@ -85,9 +87,10 @@ public class PostService implements IPostService {
 		List<Post> postList = topics.stream()
 				.map(this::getAllByTopicIdOrderByCreatedAtDesc)
 				.flatMap(List::stream)
+				.sorted(Comparator.comparing(Post::getCreatedAt).reversed())
 				.toList();
 
-		List<PostDto> postDtoList = this.postMapper.postsToPostDtos(postList);
+		List<PostDtoLight> postDtoList = this.postMapper.postsToPostDtoLight(postList);
 
 		log.info("Posts successfully retrieved from database: {}", postDtoList);
 
@@ -99,7 +102,7 @@ public class PostService implements IPostService {
 	}
 
 	private User retrieveUserByUsername(String username) {
-		// Retrieve user from database with topics
+		// Retrieve user from the database with topics
 		return userRepository.findWithTopicsByUsername(username).orElseThrow(() -> new ResourceNotFoundException("User not found with username:{%s} ".formatted(username)));
 
 	}

@@ -27,8 +27,8 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public UserResponse getUserById(Long id) {
-        User user = retrieveUserById(id);
+    public UserResponse getUserByUserName(String username) {
+        User user = retrieveUserWithTopicsByUsername(username);
 
         UserResponse userResponse = userMapper.userToUserResponse(user);
 
@@ -68,8 +68,8 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public void updateUser(Long userId, UserRequest userRequest) throws UsernameAlreadyExistingException, EmailAlreadyExistingException {
-        User userToUpdate = retrieveUserById(userId);
+    public void updateUser(String username, UserRequest userRequest) throws UsernameAlreadyExistingException, EmailAlreadyExistingException {
+        User userToUpdate = retrieveUserByUsername(username);
 
         if (userRequest.getUsername() != null && !userRequest.getUsername().isEmpty()) {
             isUsernameTaken(userRequest, userToUpdate);
@@ -89,8 +89,14 @@ public class UserService implements IUserService {
         userRepository.save(userToUpdate);
     }
 
-    private User retrieveUserById(Long id) {
-        return userRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("User not found with id: {%d}".formatted(id)));
+    private User retrieveUserWithTopicsByUsername(String username) {
+        return userRepository.findWithTopicsByUsername(username)
+                .orElseThrow(() -> new ResourceNotFoundException("User not found with username:{%s} ".formatted(username)));
+    }
+
+    private User retrieveUserByUsername(String username) {
+        return userRepository.findByUsername(username)
+                .orElseThrow(() -> new ResourceNotFoundException("User not found with username:{%s} ".formatted(username)));
     }
 
     private void isUsernameTaken(UserRequest userRequest, User userToUpdate) throws UsernameAlreadyExistingException {
