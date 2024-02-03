@@ -3,6 +3,7 @@ package com.openclassrooms.mddapi.controller;
 import java.util.List;
 
 import com.openclassrooms.mddapi.dto.TopicDto;
+import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,13 +13,10 @@ import com.openclassrooms.mddapi.service.ITopicService;
 @RestController
 @RequestMapping("/topic")
 @CrossOrigin(origins = "http://localhost:4200")
+@AllArgsConstructor
 @Slf4j
 public class TopicController {
 	private final ITopicService topicService;
-	
-	public TopicController(ITopicService topicService) {
-		this.topicService = topicService;		
-	}
 
 	@GetMapping()
 	public ResponseEntity<?> getAllTopics() {

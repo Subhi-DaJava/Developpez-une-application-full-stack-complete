@@ -3,6 +3,7 @@ package com.openclassrooms.mddapi.controller;
 import com.openclassrooms.mddapi.dto.UserRequest;
 import com.openclassrooms.mddapi.dto.UserResponse;
 import com.openclassrooms.mddapi.service.UserService;
+import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -11,12 +12,9 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/user")
 @Slf4j
 @CrossOrigin(origins = "http://localhost:4200")
+@AllArgsConstructor
 public class UserController {
     private final UserService userService;
-
-    public UserController(UserService userService) {
-        this.userService = userService;
-    }
 
     @GetMapping("/{username}")
     ResponseEntity<?> getUserById(@PathVariable(name = "username") String username) {
@@ -27,18 +25,6 @@ public class UserController {
         }
         log.info("User successfully retrieved from database: {}", userResponse);
         return ResponseEntity.ok(userResponse);
-    }
-
-    @PostMapping
-    ResponseEntity<?> addUser(@RequestBody UserRequest userResponse) {
-        UserResponse userCreated = userService.addUser(userResponse);
-
-        if(userCreated == null || userCreated.getUsername() == null){
-            log.error("User not added to database");
-            return ResponseEntity.badRequest().body("User not added");
-        }
-        log.info("User successfully added to database: {}", userCreated);
-        return ResponseEntity.ok(userCreated);
     }
 
     @PutMapping("/{username}")

@@ -11,6 +11,7 @@ import com.openclassrooms.mddapi.model.User;
 import com.openclassrooms.mddapi.repository.PostRepository;
 import com.openclassrooms.mddapi.repository.TopicRepository;
 import com.openclassrooms.mddapi.repository.UserRepository;
+import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -22,20 +23,13 @@ import java.util.Set;
 
 @Service
 @Transactional
+@AllArgsConstructor
 @Slf4j
 public class PostService implements IPostService {
 	private final TopicRepository topicRepository;
 	private final PostRepository postRepository;
 	private final UserRepository userRepository;
 	private final PostMapper postMapper;
-
-	public PostService(PostRepository postRepository, UserRepository userRepository, PostMapper postMapper,
-					   TopicRepository topicRepository) {
-		this.postRepository = postRepository;
-		this.userRepository = userRepository;
-		this.postMapper = postMapper;
-		this.topicRepository = topicRepository;
-	}
 
 	@Override
 	public PostDto createPost(PostDto postDto) {

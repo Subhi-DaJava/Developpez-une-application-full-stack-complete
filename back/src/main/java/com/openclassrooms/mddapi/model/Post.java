@@ -3,19 +3,22 @@ package com.openclassrooms.mddapi.model;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.io.Serial;
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @Table(name = "posts")
-@Data
+@Setter
+@Getter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@ToString(exclude = {"user", "topic", "comments"})
-public class Post {
-
+public class Post implements Serializable {
+	@Serial
+	private static final long serialVersionUID = 1905122041950251207L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="post_id")

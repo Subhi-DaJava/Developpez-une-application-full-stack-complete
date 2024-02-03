@@ -9,22 +9,21 @@ import com.openclassrooms.mddapi.exception.UsernameAlreadyExistingException;
 import com.openclassrooms.mddapi.mapper.UserMapper;
 import com.openclassrooms.mddapi.model.User;
 import com.openclassrooms.mddapi.repository.UserRepository;
+import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @Transactional
+@AllArgsConstructor
 @Slf4j
 public class UserService implements IUserService {
 
     private final UserRepository userRepository;
     private final UserMapper userMapper;
-
-    public UserService(UserRepository userRepository, UserMapper userMapper) {
-        this.userRepository = userRepository;
-        this.userMapper = userMapper;
-    }
+    private final PasswordEncoder passwordEncoder;
 
     @Override
     public UserResponse getUserByUserName(String username) {
@@ -60,6 +59,7 @@ public class UserService implements IUserService {
         }
 
         User user = userMapper.userRequestToUser(userRequest);
+        user.setPassword(passwordEncoder.encode(userRequest.getPassword()));
 
         User savedUser = userRepository.save(user);
         UserResponse userResponse = userMapper.userToUserResponse(savedUser);

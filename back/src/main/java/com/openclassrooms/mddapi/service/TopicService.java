@@ -10,6 +10,7 @@ import com.openclassrooms.mddapi.exception.UserNotSubscribeToTopicException;
 import com.openclassrooms.mddapi.mapper.TopicMapper;
 import com.openclassrooms.mddapi.model.User;
 import com.openclassrooms.mddapi.repository.UserRepository;
+import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
@@ -19,21 +20,13 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @Transactional
+@AllArgsConstructor
 @Slf4j
 public class TopicService implements ITopicService {
 
 	private final TopicRepository topicRepository;
 	private final TopicMapper topicMapper;
 	private final UserRepository userRepository;
-
-	public TopicService(
-			TopicRepository topicRepository,
-			TopicMapper topicMapper,
-			UserRepository userRepository) {
-		this.topicRepository = topicRepository;
-		this.topicMapper = topicMapper;
-		this.userRepository = userRepository;
-	}
 
 	@Override
 	public List<TopicDto> getTopics() {
