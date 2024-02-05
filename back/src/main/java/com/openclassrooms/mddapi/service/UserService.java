@@ -9,6 +9,7 @@ import com.openclassrooms.mddapi.exception.UsernameAlreadyExistingException;
 import com.openclassrooms.mddapi.mapper.UserMapper;
 import com.openclassrooms.mddapi.model.User;
 import com.openclassrooms.mddapi.repository.UserRepository;
+import com.openclassrooms.mddapi.security_config.PasswordValidatorUtil;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -44,6 +45,9 @@ public class UserService implements IUserService {
             log.error("Field should not be empty");
             throw new FieldShouldNotBeEmptyException("Field should not be empty");
         }
+
+        // Validate the password
+        PasswordValidatorUtil.validatePassword(userRequest.getPassword());
 
         User existingUserByUsername = userRepository.findByUsername(userRequest.getUsername()).orElse(null);
         User existingUserByEmail = userRepository.findByEmail(userRequest.getEmail()).orElse(null);
