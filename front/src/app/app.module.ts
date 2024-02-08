@@ -5,26 +5,28 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
-import {TopicComponent} from "./pages/topic/topic.component";
-import {HttpClientModule} from "@angular/common/http";
-import {UserComponent} from "./pages/user/user.component";
-
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
+import {JwtInterceptor} from "./interceptors/jwt.interceptor";
+import {MatToolbarModule} from "@angular/material/toolbar";
+import {NgOptimizedImage} from "@angular/common";
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
-    TopicComponent,
-    UserComponent
+    HomeComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatButtonModule,
-    HttpClientModule
+    HttpClientModule,
+    MatToolbarModule,
+    NgOptimizedImage
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -1,0 +1,16 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <div>
+    <label for="usernameOrEmail">Email ou Nom d'utilisateur</label>
+    <input id="usernameOrEmail" type="text" formControlName="usernameOrEmail" required>
+  </div>
+
+  <div>
+    <label for="password">Mot de passe</label>
+    <input id="password" type="password" formControlName="password" required>
+  </div>
+
+  <div *ngIf="onError">
+    Ce champ est obligatoire.
+  </div>
+  <button type="submit">Se connecter</button>
+</form>

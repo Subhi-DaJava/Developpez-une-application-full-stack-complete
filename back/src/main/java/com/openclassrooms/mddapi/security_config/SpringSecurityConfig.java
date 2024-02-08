@@ -22,8 +22,11 @@ import org.springframework.security.oauth2.jwt.JwtEncoder;
 import org.springframework.security.oauth2.jwt.NimbusJwtDecoder;
 import org.springframework.security.oauth2.jwt.NimbusJwtEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
 
 import javax.crypto.spec.SecretKeySpec;
+import java.util.Collections;
 
 @Configuration
 @EnableWebSecurity
@@ -53,8 +56,7 @@ public class SpringSecurityConfig {
         return
                 http
                         .csrf(AbstractHttpConfigurer::disable)
-                        .cors(AbstractHttpConfigurer::disable)
-
+                        .cors(Customizer.withDefaults())
                         .authorizeHttpRequests(auth ->
                                 auth
                                         .requestMatchers("/auth/**").permitAll()
@@ -89,4 +91,14 @@ public class SpringSecurityConfig {
         return new BCryptPasswordEncoder();
     }
 
+    @Bean
+    public CorsConfigurationSource corsConfigurationSource() {
+        return request -> {
+            var cors = new CorsConfiguration();
+            cors.setAllowedOrigins(Collections.singletonList("http://localhost:4200"));
+            cors.setAllowedMethods(Collections.singletonList("*"));
+            cors.setAllowedHeaders(Collections.singletonList("*"));
+            return cors;
+        };
+    }
 }

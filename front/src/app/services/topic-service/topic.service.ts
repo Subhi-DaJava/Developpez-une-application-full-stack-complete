@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Topic} from "../../models/topic";
 import {Observable} from "rxjs";
 
@@ -14,4 +14,5 @@ export class TopicService {
   getTopics(): Observable<Topic[]> {
     return this.http.get<Topic[]>(this.baseUrl + '/topic');
   }
+
 }

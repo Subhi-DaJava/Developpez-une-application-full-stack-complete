@@ -1,15 +1,23 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
-import {TopicComponent} from "./pages/topic/topic.component";
-import {UserComponent} from "./pages/user/user.component";
+import {UnAuthGuard} from "./auth/gurards/un-auth.guard";
+import {AuthGuard} from "./auth/gurards/auth.guard";
 
-// consider a guard combined with canLoad / canActivate route option
-// to manage unauthenticated user to access private routes
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'topics', title: 'topic-list', component: TopicComponent },
-  { path: 'user/: id', title: 'user', component: UserComponent }
+
+  { path: '', canActivate: [UnAuthGuard],
+    loadChildren: () => import('./auth/auth-routing-modules/auth.module').then(m => m.AuthModule) },
+
+
+  { path: 'topics',
+    canActivate: [AuthGuard],
+    loadChildren: () => import('./auth/resource-routing-modules/resource.module').then(m => m.ResourceModule) },
+
+  { path: 'user/: username', title: 'User-Profile',
+    canActivate: [AuthGuard],
+    loadChildren: () => import('./auth/resource-routing-modules/resource.module').then(m => m.ResourceModule) },
 ];
 
 @NgModule({

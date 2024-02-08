@@ -12,7 +12,6 @@ import com.openclassrooms.mddapi.service.ITopicService;
 
 @RestController
 @RequestMapping("/topic")
-@CrossOrigin(origins = "http://localhost:4200")
 @AllArgsConstructor
 @Slf4j
 public class TopicController {
