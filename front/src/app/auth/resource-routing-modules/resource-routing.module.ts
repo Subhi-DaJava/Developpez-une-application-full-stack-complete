@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import {RouterModule, Routes} from "@angular/router";
-import {TopicComponent} from "../../pages/topic/topic.component";
 import {UserComponent} from "../../pages/user/user.component";
+import {TopicListComponent} from "../../pages/topic-list/topic-list.component";
 
 const routes: Routes = [
-  { path: '', title: 'Topics', component: TopicComponent },
+  { path: '', title: 'Topics', component: TopicListComponent },
   { path: 'user/:username', title: 'User-Profile', component: UserComponent }
 ];
 

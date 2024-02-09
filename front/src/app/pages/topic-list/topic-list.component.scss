@@ -1,0 +1,10 @@
+.topic-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+app-topic {
+  flex: 0 0 48%;
+  margin-bottom: 1em;
+}

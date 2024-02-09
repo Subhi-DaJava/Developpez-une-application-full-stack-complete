@@ -1,15 +1,14 @@
+<div class="topic-container">
+  <h3>Topic: {{ topic.name }}</h3>
+  <p>Description: {{ topic.description }}</p>
 
-<div class="topic-list-container">
-  <h2>List de Topics</h2>
-  <div>
-    <div *ngFor="let topic of topics">
-      <h3>Topic: {{ topic.name }}</h3>
-      <p>Description: {{ topic.description }}</p>
-    </div>
-  </div>
+  <button (click)="onSubscribe(topic.name)">
+    {{ isSubscribed ? "se désabonner" : "s'abonner" }}
+  </button>
+
   <div *ngIf="errorMessage">
-    <div class="alert alert-danger" role="alert">
-      <h2>Something went wrong: {{ errorMessage }}</h2>
+    <div class="alert alert-danger">
+      {{ errorMessage }}
     </div>
   </div>
 </div>

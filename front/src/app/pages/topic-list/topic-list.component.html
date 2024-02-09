@@ -1,0 +1,12 @@
+<div class="topic-list">
+
+  <app-topic *ngFor="let topic of topics" [topic]="topic" [subscribedTopics]="user.topics"></app-topic>
+
+</div>
+
+
+<div *ngIf="errorMessage">
+  <div class="alert alert-danger" role="alert">
+    <h2>Something went wrong: {{ errorMessage }}</h2>
+  </div>
+</div>
