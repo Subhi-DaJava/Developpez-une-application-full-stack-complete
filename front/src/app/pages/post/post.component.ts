@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {PostService} from "../../services/post-service/post.service";
 import {Post} from "../../models/post";
 import {ActivatedRoute} from "@angular/router";
@@ -9,8 +9,7 @@ import {ActivatedRoute} from "@angular/router";
   styleUrls: ['./post.component.scss']
 })
 export class PostComponent implements OnInit {
-  @Input() post!: Post;
-  @Input() isList!: boolean;
+  post!: Post;
   errorMessage!: string;
   postId!: number;
 

@@ -1,17 +1,17 @@
 <div class="post-container">
   <div class="post-header">
-    <a *ngIf="!isList" routerLink="/posts"><img src="assets/back-arrow.png" alt="Retour"></a>
+    <a routerLink="/posts"><img src="assets/back-arrow.png" alt="Retour"></a>
     <h1 class="post-title">{{ post.title | titlecase }}</h1>
   </div>
   <div class="post-details">
     <p>{{ post.createdAt | date }}</p>
     <p>{{ post.authorUsername }}</p>
-    <p *ngIf="!isList" >{{ post.topicName }}</p>
+    <p>{{ post.topicName }}</p>
   </div>
   <div class="post-content">
     <p>{{ post.content }}</p>
   </div>
-  <div *ngIf="!isList" >
+  <div>
     <hr>
     <h2>Commentaires</h2>
     <div class="comments">

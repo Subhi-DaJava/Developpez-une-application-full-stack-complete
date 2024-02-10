@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {Post} from "../../models/post";
 import {PostService} from "../../services/post-service/post.service";
+import {PostLight} from "../../models/post-light";
 
 @Component({
   selector: 'app-post-list',
@@ -8,7 +8,7 @@ import {PostService} from "../../services/post-service/post.service";
   styleUrls: ['./post-list.component.scss']
 })
 export class PostListComponent implements OnInit {
-  posts: Post[] = [];
+  posts: PostLight[] = [];
   errorMessage!: string;
   constructor(private postService: PostService) { }
 
