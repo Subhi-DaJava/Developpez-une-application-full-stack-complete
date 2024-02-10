@@ -5,6 +5,8 @@ import {TopicComponent} from "../../pages/topic/topic.component";
 import {UserComponent} from "../../pages/user/user.component";
 import {ReactiveFormsModule} from "@angular/forms";
 import {TopicListComponent} from "../../pages/topic-list/topic-list.component";
+import {PostComponent} from "../../pages/post/post.component";
+import { PostListComponent } from '../../pages/post-list/post-list.component';
 
 
 
@@ -12,7 +14,9 @@ import {TopicListComponent} from "../../pages/topic-list/topic-list.component";
   declarations: [
     TopicComponent,
     UserComponent,
-    TopicListComponent
+    TopicListComponent,
+    PostComponent,
+    PostListComponent
   ],
   imports: [
     CommonModule,

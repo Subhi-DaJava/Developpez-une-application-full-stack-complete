@@ -13,7 +13,7 @@ export class UnAuthGuard implements CanActivate {
 
   public canActivate(): boolean {
     if (this.sessionService.isLogin()) {
-      this.router.navigate(['topics']).then();
+      this.router.navigate(['posts']).then();
       return false;
     }
     return true;

@@ -1,0 +1,12 @@
+<div class="header">
+  <button>Créer un article</button>
+  <div class="sort-container">
+    <p>Trier par <img src="assets/down-arrow.jpg" alt="flèche vers le bas"></p>
+  </div>
+</div>
+
+<div class="post-list-container">
+  <div class="post-container" *ngFor="let post of posts">
+    <app-post [post]="post" [isList]="true" [routerLink]="['detail', post.id]"></app-post>
+  </div>
+</div>

@@ -14,9 +14,14 @@ export class UserComponent implements OnInit {
   constructor(private userService: UserService) { }
 
   ngOnInit(): void {
-    this.getUser('subhi');
+    this.getUser();
   }
-  getUser(username: string) {
+  getUser() {
+    const username = sessionStorage.getItem('username');
+    if (!username) {
+      this.errorMessage = "You must be logged in to see your posts";
+      return;
+    }
     this.userService.getUser(username).subscribe({
       next: data => {
         this.user = data;

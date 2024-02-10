@@ -1,0 +1,54 @@
+.post-container {
+  width: 80%;
+  margin: auto;
+}
+
+.post-header {
+  display: flex;
+  align-items: center;
+  img, h1 {
+    height: 20px;
+  }
+}
+
+.post-header img {
+  margin-right: 20px;
+
+}
+
+.post-title {
+  font-weight: bold;
+}
+
+.post-details {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.post-content {
+  margin-bottom: 20px;
+}
+
+.comments {
+  display: flex;
+  flex-direction: column;
+}
+
+.username {
+  font-weight: bold;
+}
+
+.comment-input {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.comment-input textarea {
+  width: 80%;
+}
+
+.comment-input button {
+  width: 15%;
+}
