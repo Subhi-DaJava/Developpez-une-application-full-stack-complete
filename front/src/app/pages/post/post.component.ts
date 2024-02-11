@@ -1,8 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {PostService} from "../../services/post-service/post.service";
 import {Post} from "../../models/post";
-import {ActivatedRoute} from "@angular/router";
-
+import {ActivatedRoute, Router} from "@angular/router";
+import {CommentService} from "../../services/comment-service/comment.service";
+import {Comment} from "../../models/comment";
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 @Component({
   selector: 'app-post',
   templateUrl: './post.component.html',
@@ -12,16 +14,20 @@ export class PostComponent implements OnInit {
   post!: Post;
   errorMessage!: string;
   postId!: number;
+  commentForm: FormGroup | undefined
 
   constructor(private postService: PostService,
-              private activatedRoute: ActivatedRoute) {
+              private activatedRoute: ActivatedRoute,
+              private router: Router,
+              private commentService: CommentService,
+              private formBuilder: FormBuilder) {
     this.postId = +this.activatedRoute.snapshot.params['id'];
   }
 
   ngOnInit(): void {
     this.getPostById();
+    this.initForm();
   }
-
 
   public getPostById() {
     if(isNaN(this.postId)) {
@@ -32,6 +38,33 @@ export class PostComponent implements OnInit {
     return this.postService.getPostBy(this.postId).subscribe({
       next: post => {
         this.post = post;
+      },
+      error: err => {
+        this.errorMessage = err.error;
+      }
+    });
+  }
+
+  initForm() {
+    this.commentForm = this.formBuilder.group({
+      content: ['', Validators.compose([Validators.required, Validators.minLength(3)])]
+    });
+  }
+
+  createComment() {
+    const comment = this.commentForm?.value as Comment;
+    const username = sessionStorage.getItem('username');
+    if(!username) {
+      this.router.navigate(['/login']).then();
+      return;
+    }
+    comment.authorUsername = username;
+    comment.postId = this.postId;
+
+    this.commentService.createComment(comment).subscribe({
+      next: (data) => {
+        this.getPostById();
+        this.commentForm?.reset();
       },
       error: err => {
         this.errorMessage = err.error;

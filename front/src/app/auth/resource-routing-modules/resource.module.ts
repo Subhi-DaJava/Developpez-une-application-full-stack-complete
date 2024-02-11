@@ -7,6 +7,7 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {TopicListComponent} from "../../pages/topic-list/topic-list.component";
 import {PostComponent} from "../../pages/post/post.component";
 import { PostListComponent } from '../../pages/post-list/post-list.component';
+import {PostFormComponent} from "../../pages/post-form/post-form.component";
 
 
 
@@ -16,7 +17,8 @@ import { PostListComponent } from '../../pages/post-list/post-list.component';
     UserComponent,
     TopicListComponent,
     PostComponent,
-    PostListComponent
+    PostListComponent,
+    PostFormComponent
   ],
   imports: [
     CommonModule,

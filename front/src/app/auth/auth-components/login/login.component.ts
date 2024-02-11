@@ -12,8 +12,8 @@ import {SessionInformation} from "../../../models/session-information";
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
-  public hide = true;
   public onError = false;
+  public errorMessage = '';
 
   constructor(private authService: AuthService,
               private formBuilder: FormBuilder,
@@ -41,9 +41,12 @@ export class LoginComponent {
     this.authService.login(loginRequest).subscribe({
       next: (response: SessionInformation) => {
         this.sessionService.logIn(response);
-        this.router.navigate(['/topics']).then();
+        this.router.navigate(['/posts']).then();
       },
-      error: error => this.onError = true,
+      error: error => {
+        this.onError = true;
+        this.errorMessage = error.error;
+      },
     });
   }
 

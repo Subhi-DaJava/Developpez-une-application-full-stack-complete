@@ -1,0 +1,41 @@
+.form-container {
+  width: 33%;
+  margin: 0 auto;
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .back-arrow {
+      position: absolute ;
+      left: 5px;
+      height: 1.5em;
+    }
+
+    h1 {
+      margin: 0;
+    }
+  }
+
+  .form-group {
+    margin-bottom: 20px;
+
+    select,
+    input,
+    textarea {
+      width: 100%;
+      padding: 10px;
+      box-sizing: border-box;
+    }
+
+    textarea {
+      resize: none;
+    }
+  }
+
+  button {
+    display: block;
+    margin: 0 auto;
+  }
+}

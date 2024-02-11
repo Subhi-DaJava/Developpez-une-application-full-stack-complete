@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpParams} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Post} from "../../models/post";
+import {PostLight} from "../../models/post-light";
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +17,7 @@ export class PostService {
     return this.http.get<Post>(`${this.url}/${postId}`);
   }
 
-  public createPost(post: Post): Observable<Post> {
+  public createPost(post: PostLight): Observable<Post> {
 
     return this.http.post<Post>(this.url, post);
   }

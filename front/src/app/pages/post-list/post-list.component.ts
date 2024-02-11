@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {PostService} from "../../services/post-service/post.service";
 import {PostLight} from "../../models/post-light";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-post-list',
@@ -10,7 +11,8 @@ import {PostLight} from "../../models/post-light";
 export class PostListComponent implements OnInit {
   posts: PostLight[] = [];
   errorMessage!: string;
-  constructor(private postService: PostService) { }
+  constructor(private postService: PostService,
+              private router: Router) { }
 
   ngOnInit(): void {
     this.getPosts();
@@ -32,5 +34,9 @@ export class PostListComponent implements OnInit {
         this.errorMessage = err.error;
       }
     });
+  }
+
+  createPost() {
+    this.router.navigate(['posts/form']).then();
   }
 }
