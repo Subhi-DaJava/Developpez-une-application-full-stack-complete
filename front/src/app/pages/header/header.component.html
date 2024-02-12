@@ -1,0 +1,8 @@
+<header class="header">
+  <img src="assets/logo_p6.png" class="logo" alt="Logo">
+  <nav class="nav" *ngIf="isLoggedIn">
+    <a class="nav-link" [routerLink]="['/posts']" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Articles</a>
+    <a class="nav-link" [routerLink]="['/posts/topics']" routerLinkActive="active">Thèmes</a>
+    <img [routerLink]="['/me']" src="assets/profil.png" class="profile-image" alt="Profile">
+  </nav>
+</header>

@@ -1,0 +1,38 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  img {
+    width: 5%;
+  }
+}
+
+.logo, .nav-link, .profile-image {
+  margin: 10px;
+}
+
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.nav-link {
+  margin-right: 20px;
+}
+
+.active {
+  text-decoration: underline;
+  color: violet;
+}
+
+a {
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+

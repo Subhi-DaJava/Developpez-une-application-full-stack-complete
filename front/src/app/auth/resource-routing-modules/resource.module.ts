@@ -8,6 +8,7 @@ import {TopicListComponent} from "../../pages/topic-list/topic-list.component";
 import {PostComponent} from "../../pages/post/post.component";
 import { PostListComponent } from '../../pages/post-list/post-list.component';
 import {PostFormComponent} from "../../pages/post-form/post-form.component";
+import { HeaderComponent } from '../../pages/header/header.component';
 
 
 
@@ -18,7 +19,11 @@ import {PostFormComponent} from "../../pages/post-form/post-form.component";
     TopicListComponent,
     PostComponent,
     PostListComponent,
-    PostFormComponent
+    PostFormComponent,
+    HeaderComponent
+  ],
+  exports: [
+    HeaderComponent
   ],
   imports: [
     CommonModule,
