@@ -86,7 +86,9 @@ public class UserService implements IUserService {
         }
 
         if (userRequest.getPassword() != null && !userRequest.getPassword().isEmpty()) {
-            userToUpdate.setPassword(userRequest.getPassword());
+            // Validate the password
+            PasswordValidatorUtil.validatePassword(userRequest.getPassword());
+            userToUpdate.setPassword(passwordEncoder.encode(userRequest.getPassword()));
         }
 
         log.info("User updated: {}", userToUpdate);

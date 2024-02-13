@@ -17,7 +17,7 @@ const routes: Routes = [
     loadChildren: () => import('./auth/resource-routing-modules/resource.module').then(m => m.ResourceModule) },
 
   { path: 'me', title: 'User-Profile', canActivate: [AuthGuard],
-    component: UserComponent}
+    component: UserComponent }
 ];
 
 @NgModule({

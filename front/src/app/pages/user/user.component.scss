@@ -1,0 +1,58 @@
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.user-profile-title, form, hr, header {
+  width: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  .form-group {
+    margin-bottom: 20px;
+  }
+}
+
+hr {
+  width: 50%;
+  border: none;
+  border-top: 1px solid black;
+  height: 1px;
+}
+
+.subscriptions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.topic {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 45%;
+  margin: 20px 20px;
+  background-color: rgba(128, 128, 128, 0.2);
+
+  h3,p {
+    text-align: left;
+    padding-left: 10px;
+  }
+}
+
+button {
+  margin: 10px auto;
+}
+
+.topics-container {
+  width: 60%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.logOut  {
+  color: red;
+  font-size: 0.8rem;
+}
