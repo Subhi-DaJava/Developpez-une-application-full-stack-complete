@@ -1,13 +1,18 @@
 <div class="center">
-  <img ngSrc="/assets/logo_p6.png" alt="logo" height="401" width="695" priority/>
+  <mat-card>
+    <img ngSrc="/assets/logo_p6.png" alt="logo" height="401" width="695" priority/>
 
-  <div class="container">
-    <div class="square">
-      <span routerLink="login">Se connecter</span>
+    <div class="container">
+      <mat-card class="square">
+        <a mat-button class="centered-text" routerLink="login">Se connecter</a>
+      </mat-card>
+
+      <mat-card class="square">
+        <a mat-button class="centered-text" routerLink="register">S'inscrire</a>
+      </mat-card>
     </div>
-    <div class="square">
-      <span routerLink="register">S'inscrire</span>
-    </div>
-  </div>
+  </mat-card>
 </div>
+
+
 

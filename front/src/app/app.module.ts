@@ -10,6 +10,7 @@ import {JwtInterceptor} from "./interceptors/jwt.interceptor";
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {NgOptimizedImage} from "@angular/common";
 import {ReactiveFormsModule} from "@angular/forms";
+import {MatCardModule} from "@angular/material/card";
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import {ReactiveFormsModule} from "@angular/forms";
     HttpClientModule,
     MatToolbarModule,
     NgOptimizedImage,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatCardModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }
