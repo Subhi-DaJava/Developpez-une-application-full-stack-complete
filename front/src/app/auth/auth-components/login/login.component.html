@@ -1,17 +1,21 @@
 <app-header></app-header>
-<form [formGroup]="form" (ngSubmit)="onSubmit()">
-  <div>
-    <label for="usernameOrEmail">Email ou Nom d'utilisateur</label>
-    <input id="usernameOrEmail" type="text" formControlName="usernameOrEmail" required>
-  </div>
-
-  <div>
-    <label for="password">Mot de passe</label>
-    <input id="password" type="password" formControlName="password" required>
-  </div>
-
+<hr>
+<a routerLink="/"><img class="back-arrow" src="assets/back-arrow.png" alt="Retour"></a>
+<div class="center">
+  <h1>Se connecter</h1>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="vertical">
+      <label for="usernameOrEmail">Email ou Nom d'utilisateur</label>
+      <input id="usernameOrEmail" type="text" formControlName="usernameOrEmail" required>
+      <label for="password">Mot de passe</label>
+      <input id="password" type="password" formControlName="password" required>
+      <div class="center-button">
+        <button mat-raised-button type="submit" class="vertical-item">Se connecter</button>
+      </div>
+    </div>
+  </form>
   <div *ngIf="onError">
     Ce champ est obligatoire.
   </div>
-  <button type="submit">Se connecter</button>
-</form>
+</div>
+

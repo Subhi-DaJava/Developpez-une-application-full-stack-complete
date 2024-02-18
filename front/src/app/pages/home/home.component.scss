@@ -17,18 +17,16 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    box-shadow: none;
 
     img {
-      width: 40%;
+      width: 50%;
       height: auto;
     }
 
     a {
       width: 80%;
       text-align: center;
-      @media (max-width: 600px){
-        width: 60%;
-      }
     }
   }
   .container {
@@ -36,9 +34,6 @@
     display: flex;
     justify-content: space-between;
     width: 40%;
-    @media (max-width: 600px) {
-      flex-direction: column;
-    }
   }
 
   .square {
@@ -52,10 +47,14 @@
       text-decoration: none;
     }
   }
+  .mat-card {
+    border-radius: 8px;
+  }
 }
 
 .mat-card:hover {
   box-shadow: none;
+
 }
 .centered-text {
   display: flex;
@@ -63,3 +62,15 @@
   align-items: center;
 }
 
+@media (max-width: 767px) {
+  .center {
+    .container {
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      .square  {
+        width: 30%;
+      }
+    }
+  }
+}

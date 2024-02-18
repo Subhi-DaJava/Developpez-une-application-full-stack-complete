@@ -1,8 +1,32 @@
-<header class="header">
-  <img src="assets/logo_p6.png" class="logo" alt="Logo">
-  <nav class="nav" *ngIf="isLoggedIn">
+<div class="header">
+  <div class="logo-image">
+    <img src="assets/logo_p6.png" class="logo" alt="Logo">
+  </div>
+  <nav class="nav-large" *ngIf="isLoggedIn">
     <a class="nav-link" [routerLink]="['/posts']" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Articles</a>
     <a class="nav-link" [routerLink]="['/posts/topics']" routerLinkActive="active">Thèmes</a>
-    <img [routerLink]="['/me']" src="assets/profil.png" class="profile-image" alt="Profile">
+    <div class="profile-section">
+      <img [routerLink]="['/me']" src="assets/profil.png" class="profile-image" alt="Profile">
+    </div>
   </nav>
-</header>
+  <mat-sidenav-container>
+    <mat-sidenav mode="side" position="end" class="burger-menu" [opened]="isMenuOpen" (click)="toggleMenu()">
+      <button mat-icon-button>
+        <mat-icon>close</mat-icon></button>
+      <nav class="nav-small" *ngIf="isLoggedIn">
+        <div class="nav-link-items">
+          <a class="nav-link" [routerLink]="['/posts']" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Articles</a>
+          <a class="nav-link" [routerLink]="['/posts/topics']" routerLinkActive="active">Thèmes</a>
+        </div>
+        <div class="profile-section">
+          <img [routerLink]="['/me']" src="assets/profil.png" class="profile-image" alt="Profile">
+        </div>
+      </nav>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <button mat-icon-button class="burger-menu" (click)="toggleMenu()">
+        <mat-icon>menu</mat-icon>
+      </button>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

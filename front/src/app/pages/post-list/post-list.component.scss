@@ -1,4 +1,4 @@
-.header {
+.arrow-create {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -37,3 +37,57 @@ button {
   display: flex;
   gap: 50px;
 }
+
+.create-post-button {
+  margin-top: 20px;
+  background-color: #795dc7;
+  color: white;
+}
+
+@media (max-width: 767px) {
+  .arrow-create {
+    margin-top: 300px;
+    display: flex;
+    flex-direction: column;
+  }
+  hr {
+    margin-top: 2px;
+  }
+}
+
+::ng-deep app-header .header {
+  @media (max-width: 767px) {
+    width: 100% !important;
+    align-items: end !important;
+    justify-content: center !important;
+
+    .active {
+      text-decoration: underline;
+      color: violet;
+    }
+
+    a {
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    .logo-image {
+      width: 20%;
+      position: absolute;
+      left: 3%;
+    }
+
+    .profile-image {
+      display: flex !important;
+    }
+
+  }
+}
+
+
+
+
+

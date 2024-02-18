@@ -5,6 +5,8 @@ import {AuthRoutingModule} from "./auth-routing.module";
 import {LoginComponent} from "../auth-components/login/login.component";
 import {RegisterComponent} from "../auth-components/register/register.component";
 import {ResourceModule} from "../resource-routing-modules/resource.module";
+import {MatInputModule} from "@angular/material/input";
+import {MatButtonModule} from "@angular/material/button";
 
 @NgModule({
   declarations: [
@@ -16,7 +18,9 @@ import {ResourceModule} from "../resource-routing-modules/resource.module";
         CommonModule,
         FormsModule,
         ReactiveFormsModule,
-        ResourceModule
+        ResourceModule,
+        MatInputModule,
+        MatButtonModule
     ]
 })
 export class AuthModule { }

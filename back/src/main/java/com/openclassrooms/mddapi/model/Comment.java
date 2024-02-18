@@ -6,6 +6,7 @@ import lombok.*;
 
 import java.io.Serial;
 import java.io.Serializable;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "comments")
@@ -34,5 +35,7 @@ public class Comment implements Serializable {
 	private Post post;
 
 	private String content;
+
+	private LocalDate createdAt;
 
 }

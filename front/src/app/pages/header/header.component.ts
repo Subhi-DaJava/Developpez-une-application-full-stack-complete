@@ -8,6 +8,7 @@ import {SessionService} from "../../services/session-service/session.service";
 })
 export class HeaderComponent implements OnInit {
   isLoggedIn: boolean = false;
+  isMenuOpen = false;
   constructor(private sessionService: SessionService) { }
 
   ngOnInit(): void {
@@ -17,5 +18,9 @@ export class HeaderComponent implements OnInit {
   isLogged() {
     const token = this.sessionService.sessionInformation?.token;
     this.isLoggedIn = sessionStorage.getItem('token') !== null && token !== null;
+  }
+  toggleMenu() {
+    this.isMenuOpen = !this.isMenuOpen;
+    console.log('Menu status: ', this.isMenuOpen);
   }
 }

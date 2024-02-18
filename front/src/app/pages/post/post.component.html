@@ -1,6 +1,6 @@
 <app-header></app-header>
 
-<div class="post-container">
+<div *ngIf="post" class="post-container">
   <div class="post-header">
     <a routerLink="/posts"><img src="assets/back-arrow.png" alt="Retour"></a>
     <h1 class="post-title">{{ post.title | titlecase }}</h1>

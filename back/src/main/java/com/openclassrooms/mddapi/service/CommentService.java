@@ -15,6 +15,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
+
 @Service
 @Transactional
 @AllArgsConstructor
@@ -42,6 +44,7 @@ public class CommentService implements ICommentService {
                 .content(commentDto.getContent())
                 .user(user)
                 .post(getPostById(commentDto.getPostId()))
+                .createdAt(LocalDate.now())
                 .build();
 
         comment = commentRepository.save(comment);

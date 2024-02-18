@@ -9,6 +9,9 @@ import {PostComponent} from "../../pages/post/post.component";
 import { PostListComponent } from '../../pages/post-list/post-list.component';
 import {PostFormComponent} from "../../pages/post-form/post-form.component";
 import { HeaderComponent } from '../../pages/header/header.component';
+import {MatButtonModule} from "@angular/material/button";
+import {MatSidenavModule} from "@angular/material/sidenav";
+import {MatIconModule} from "@angular/material/icon";
 
 
 
@@ -28,7 +31,10 @@ import { HeaderComponent } from '../../pages/header/header.component';
   imports: [
     CommonModule,
     ResourceRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatButtonModule,
+    MatSidenavModule,
+    MatIconModule
   ]
 })
 export class ResourceModule { }
