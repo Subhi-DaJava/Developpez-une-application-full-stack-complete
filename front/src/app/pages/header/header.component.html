@@ -10,7 +10,7 @@
     </div>
   </nav>
   <mat-sidenav-container>
-    <mat-sidenav mode="side" position="end" class="burger-menu" [opened]="isMenuOpen" (click)="toggleMenu()">
+    <mat-sidenav mode="over" position="end" class="burger-menu" [opened]="isMenuOpen" (click)="toggleMenu()">
       <button mat-icon-button>
         <mat-icon>close</mat-icon></button>
       <nav class="nav-small" *ngIf="isLoggedIn">

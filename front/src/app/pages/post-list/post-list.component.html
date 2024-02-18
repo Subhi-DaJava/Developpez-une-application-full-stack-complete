@@ -3,7 +3,10 @@
 <div class="arrow-create">
   <button mat-raised-button class="create-post-button" (click)="createPost()">Créer un article</button>
   <div class="sort-container">
-    <p>Trier par <img src="assets/down-arrow.jpg" alt="flèche vers le bas"></p>
+    <div class="sort-arrow">
+      <p>Trier par</p>
+      <img src="assets/down-arrow.jpg" alt="flèche vers le bas">
+    </div>
   </div>
 </div>
 
@@ -11,7 +14,7 @@
   <div class="post-container" *ngFor="let post of posts" [routerLink]="['detail',post.id]">
     <h2>{{post.title}}</h2>
     <div class="topic-author">
-      <p>{{post.topicName}}</p>
+      <p>{{post.createdAt}}</p>
       <p>{{post.authorUsername}}</p>
     </div>
     <div class="post-content">
