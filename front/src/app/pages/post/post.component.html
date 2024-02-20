@@ -1,42 +1,51 @@
 <app-header></app-header>
-
+<hr>
 <div *ngIf="post" class="post-container">
   <div class="post-header">
     <a routerLink="/posts"><img src="assets/back-arrow.png" alt="Retour"></a>
     <h1 class="post-title">{{ post.title | titlecase }}</h1>
   </div>
-  <div class="post-details">
-    <p>{{ post.createdAt | date }}</p>
-    <p>{{ post.authorUsername | titlecase}}</p>
-    <p>{{ post.topicName }}</p>
-  </div>
-  <div class="post-content">
-    <p>{{ post.content }}</p>
-  </div>
-  <div>
-    <hr>
-    <h2>Commentaires</h2>
-    <div class="comments">
-      <div *ngFor="let comment of post.comments" class="comment-line">
-        <div class="username-comment">
-          <p class="username">{{ comment.authorUsername }} </p>
-          <div class="comment-content">{{ comment.content }}</div>
-        </div>
+  <div class="main-content">
+    <div class="post-info-content">
+      <div class="post-details">
+        <p>{{ post.createdAt | date }}</p>
+        <p class="author">{{ post.authorUsername | titlecase}}</p>
+        <p>{{ post.topicName }}</p>
+      </div>
+      <div class="post-content">
+        <p>{{ post.content }}</p>
       </div>
     </div>
 
-    <div class="commentForm" *ngIf="commentForm">
-      <form [formGroup]="commentForm" (ngSubmit)="createComment()">
-        <div class="form-group comment-input">
-          <textarea formControlName="content" placeholder="Écrivez ici votre commentaire" rows="5"></textarea>
-          <button type="submit" [disabled]="commentForm.invalid">
-            <img src="assets/send-icon.png" alt="Envoyer">
-          </button>
+    <div class="comment-container">
+      <hr>
+      <h2>Commentaires</h2>
+      <div class="comments-card">
+        <div class="comments">
+          <div *ngFor="let comment of post.comments" class="comment-line">
+            <div class="username-comment">
+              <div class="username-div">
+                <p class="username">{{ comment.authorUsername }}</p>
+              </div>
+              <div class="comment-content">{{ comment.content }}</div>
+            </div>
+          </div>
         </div>
-      </form>
-    </div>
-    <div class="error-message" *ngIf="errorMessage">
-      {{ errorMessage }}
+      </div>
+
+      <div class="commentForm" *ngIf="commentForm">
+        <form [formGroup]="commentForm" (ngSubmit)="createComment()">
+          <div class="form-group comment-input">
+            <textarea formControlName="content" placeholder="Écrivez ici votre commentaire" rows="5"></textarea>
+            <button type="submit" [disabled]="commentForm.invalid">
+              <img src="assets/send-icon.png" alt="Envoyer">
+            </button>
+          </div>
+        </form>
+      </div>
+      <div class="error-message" *ngIf="errorMessage">
+        {{ errorMessage }}
+      </div>
     </div>
   </div>
 </div>

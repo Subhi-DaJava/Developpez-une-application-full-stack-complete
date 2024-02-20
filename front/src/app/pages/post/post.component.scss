@@ -1,97 +1,267 @@
 .post-container {
-  width: 80%;
-  margin: auto;
-}
-
-.post-header {
-  display: flex;
-  align-items: center;
-  img, h1 {
-    height: 20px;
-  }
-}
-
-.post-header img {
-  margin-right: 20px;
-
-}
-
-.post-title {
-  font-weight: bold;
-}
-
-.post-details {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 20px;
-}
-
-.post-content {
-  margin-bottom: 20px;
-}
-
-.comments {
-  display: flex;
-  flex-direction: column;
-  padding-left: 50px;
-}
-
-.comment-line {
-  display: flex;
-  justify-content: space-between;
-  padding: 10px 20px;
-  width: 50%;
-}
-
-.username-comment {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
   width: 100%;
-}
+  margin: 10px 20px;
+  .post-header {
+    display: flex;
+    align-items: center;
 
-.username {
-  font-weight: bold;
-  margin-bottom: 10px;
-  margin-right: 20px;
-}
+    img, h1 {
+      height: 20px;
+      font-size: 1.5rem;
+    }
 
-.comment-content {
-  color: gray;
-  background-color: rgba(0, 0, 0, 0.1);
-  padding: 10px 300px 30px 10px;
-  margin-top: 10px;
-}
+    img {
+      margin-right: 20px;
+      width: 30px;
+      height: 30px;
+    }
 
-.comment-input {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 20px;
-}
+    .post-title {
+      font-weight: bold;
+    }
 
-.comment-input textarea {
-  width: 85%;
-  height: auto;
-}
+  }
 
-.comment-input button {
-  width: 25%;
-  background: transparent;
-  border: none;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.comment-input button img {
-  height: 30px;
-  width: auto;
-}
-.commentForm {
-  padding-left: 30px;
-  textarea {
-    padding: 10px;
+  .main-content {
+
+    .post-info-content {
+      width: 80%;
+      margin-left: 40px;
+      .post-details {
+        margin-top: 20px;
+        width: 80%;
+        display: flex;
+        margin-bottom: 20px;
+        font-size: 1.3rem;
+          .date-title {
+            display: flex;
+            flex-direction: row;
+          }
+        p {
+          margin-right: 50px;
+        }
+      }
+
+      .post-content {
+        margin-bottom: 30px;
+        font-size: 1.3rem;
+      }
+    }
+  }
+
+  .comment-container {
+    hr {
+      margin: 20px 40px 20px 40px;
+      width: 90%;
+    }
+
+    h2 {
+      margin-left: 40px;
+    }
+
+    .comments {
+      width: 100%;
+      padding-left: 50px;
+
+      .comment-line {
+        padding: 10px 20px;
+        width: 80%;
+
+        .username-comment {
+          width: 100%;
+          display: flex;
+          flex-direction: row;
+
+            .username-div {
+              .username {
+                margin-bottom: 10px;
+                margin-right: 20px;
+                font-size: 1.3rem;
+              }
+            }
+          }
+
+          .comment-content {
+            font-size: 1.2rem;
+            width: 100%;
+            color: gray;
+            background-color: rgba(0, 0, 0, 0.1);
+            padding: 10px 280px 50px 20px;
+            margin-top: 10px;
+            border-radius: 10px;
+          }
+        }
+      }
+
+    .commentForm {
+      padding-left: 30px;
+      margin-left: 40px;
+      textarea {
+        padding: 10px;
+        border-radius: 12px;
+      }
+
+      .comment-input textarea {
+        width: 100%;
+        height: auto;
+      }
+
+      .comment-input {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 20px;
+      }
+      .comment-input button {
+        width: 20%;
+        background: transparent;
+        border: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .comment-input button img {
+        margin-right: 40px;
+        height: 50px;
+        width: auto;
+      }
+    }
   }
 }
+
+
+@media (max-width: 767px) {
+  body {
+    margin: 0;
+    padding: 0;
+  }
+
+  .post-container {
+    margin: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .post-header {
+      margin-top: 10px;
+
+      a {
+        margin-right: 20px;
+      }
+    }
+
+    .main-content {
+      width: 100%;
+
+      .post-info-content {
+        width: 100%;
+
+        .post-details {
+          width: 100%;
+          display: flex;
+          flex-wrap: wrap;
+
+          .author {
+            margin-left: 50%;
+          }
+
+        }
+
+        .post-content {
+          width: 100%;
+        }
+
+      }
+
+    }
+    .comment-container {
+      margin: 0;
+      width: 100%;
+      padding: 0 0;
+      hr {
+        width: 95%;
+        margin-left: 2px;
+      }
+
+      .comments-card {
+        width: 100%;
+       .comments {
+          width: 100%;
+         .comment-line {
+
+           .username-comment {
+             padding: 10px;
+             display: flex;
+             flex-direction: row-reverse;
+             justify-content: space-evenly;
+
+             align-items: flex-end;
+             flex-wrap: nowrap;
+             .comment-content {
+               padding: 10px 100px 20px 20px;
+               color: black;
+               background-color: rgba(0, 0, 0, 0);
+             }
+           }
+
+         }
+       }
+      }
+
+      .commentForm {
+        margin-left: 0;
+        margin-right: 2px;
+        padding: 0;
+        width: 100%;
+        .comment-input {
+          margin: 0 10px 0 0;
+          padding: 0;
+          position: relative;
+
+          textarea {
+            font-size: 1.3rem;
+            flex-grow: 1;
+            border-radius: 15px;
+          }
+          button {
+            img {
+              margin-right: 0;
+            }
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+
+          }
+        }
+      }
+    }
+  }
+}
+
+::ng-deep app-header .header {
+  @media (max-width: 767px) {
+    padding: 0 !important;
+    align-items: end !important;
+    justify-content: center !important;
+    .logo-image {
+      width: 30%;
+      position: absolute;
+      left: 3%;
+    }
+   .nav-small {
+     width: 160px !important;
+   }
+  }
+}
+
+
+
+
+
+
+
 
 
