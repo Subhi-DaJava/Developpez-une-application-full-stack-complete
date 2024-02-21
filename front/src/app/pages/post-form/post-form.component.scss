@@ -1,41 +1,109 @@
 .form-container {
   width: 33%;
-  margin: 0 auto;
+  margin: 20px auto;
 
   .header {
+    margin-bottom: 40px;
     display: flex;
     justify-content: space-between;
     align-items: center;
 
     .back-arrow {
       position: absolute ;
-      left: 5px;
+      left: 20px;
       height: 1.5em;
+      width: 50px;
     }
 
     h1 {
-      margin: 0;
+      margin: auto;
+      font-weight: bold;
     }
   }
 
-  .form-group {
-    margin-bottom: 20px;
+  form {
+    width: 40%;
+    margin: auto;
+    .form-group {
+      margin-bottom: 20px;
+      select,
+      input,
+      textarea {
+        width: 100%;
+        padding: 10px;
+        box-sizing: border-box;
+        border-radius: 10px;
+        border: 2px solid #795dc7;
+        color: gray;
+        font-size: 1.1rem;
+      }
 
-    select,
-    input,
-    textarea {
+      textarea {
+        resize: none;
+        height: 200px;
+      }
+    }
+
+    button {
+      display: block;
+      margin: 30px auto;
+      background-color: #795dc7;
+      color: white;
+      font-size: 1.1rem;
+      padding: 5px 40px;
+      border-radius: 10px;
+    }
+  }
+}
+
+
+@media (max-width: 767px) {
+  .form-container {
+    width: 95%;
+    margin: auto;
+    .header {
       width: 100%;
-      padding: 10px;
-      box-sizing: border-box;
+      flex-direction: column;
+      align-items: center;
+
+      img {
+        position: static;
+      }
+
+      h1 {
+        margin-top: 30px;
+        text-align: center;
+        width: 100%;
+        letter-spacing: 4px;
+      }
     }
 
-    textarea {
-      resize: none;
+    form {
+      width: 100%;
+      margin: auto;
+      .form-group {
+        width: 100%;
+        select, input, textarea {
+          width: 100%;
+        }
+      }
     }
+
   }
+}
 
-  button {
-    display: block;
-    margin: 0 auto;
+::ng-deep app-header .header {
+  @media (max-width: 767px) {
+    padding: 0 !important;
+    align-items: end !important;
+    justify-content: center !important;
+    .logo-image {
+      width: 30%;
+      position: absolute;
+      left: 3%;
+    }
+    .nav-small {
+      width: 160px !important;
+    }
   }
 }
