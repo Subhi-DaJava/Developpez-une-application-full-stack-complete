@@ -58,6 +58,9 @@
     border-radius: 8px;
     padding: 10px 20px;
     background-color: rgba(0, 0, 0, 0.05);
+    .post-content p {
+      line-height: 1.5em;
+    }
   }
 
   .topic-author {
@@ -91,6 +94,10 @@
 
     .post-container {
       width: 100%;
+
+      .post-content p {
+        line-height: 1.3em;
+      }
     }
   }
 }

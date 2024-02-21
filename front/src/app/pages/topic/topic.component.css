@@ -1,0 +1,40 @@
+.topic-container {
+  margin: 20px 30px;
+  padding: 10px 10px;
+  .content {
+    margin: auto;
+    padding: 10px 20px;
+
+    h3 {
+      font-size: 1.5rem;
+      color: black;
+      font-weight: bold;
+    }
+    background-color: #f1f1f1;
+
+    .subscribe-button {
+      display: flex;
+      justify-content: center;
+      button {
+        margin: 10px 0;
+        padding: 10px 25px;
+        background-color: #795dc7;
+        border-radius: 10px;
+        color: white;
+        font-size: 1.3rem;
+        border: none;
+      }
+    }
+
+    .clamp-lines {
+      font-size: 1.3rem;
+      line-height: 1.5em;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+
+    }
+  }
+
+}

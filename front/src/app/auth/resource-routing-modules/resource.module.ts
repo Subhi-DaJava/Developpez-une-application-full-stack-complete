@@ -12,6 +12,7 @@ import { HeaderComponent } from '../../pages/header/header.component';
 import {MatButtonModule} from "@angular/material/button";
 import {MatSidenavModule} from "@angular/material/sidenav";
 import {MatIconModule} from "@angular/material/icon";
+import {MatListModule} from "@angular/material/list";
 
 
 
@@ -28,13 +29,14 @@ import {MatIconModule} from "@angular/material/icon";
   exports: [
     HeaderComponent
   ],
-  imports: [
-    CommonModule,
-    ResourceRoutingModule,
-    ReactiveFormsModule,
-    MatButtonModule,
-    MatSidenavModule,
-    MatIconModule
-  ]
+    imports: [
+        CommonModule,
+        ResourceRoutingModule,
+        ReactiveFormsModule,
+        MatButtonModule,
+        MatSidenavModule,
+        MatIconModule,
+        MatListModule
+    ]
 })
 export class ResourceModule { }

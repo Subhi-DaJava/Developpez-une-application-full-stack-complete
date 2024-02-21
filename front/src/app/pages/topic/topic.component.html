@@ -1,11 +1,17 @@
 <div class="topic-container">
-  <h3>Topic: {{ topic.name }}</h3>
-  <p>Description: {{ topic.description }}</p>
+  <div class="content">
 
-  <button (click)="onSubscribe(topic.name)">
-    {{ isSubscribed ? "se désabonner" : "s'abonner" }}
-  </button>
+    <h3>Topic: {{ topic.name }}</h3>
 
+    <p mat-line class="clamp-lines">Description: {{ topic.description }}</p>
+
+    <div class="subscribe-button">
+      <button (click)="onSubscribe(topic.name)">
+        {{ isSubscribed ? "se désabonner" : "s'abonner" }}
+      </button>
+    </div>
+
+  </div>
   <div *ngIf="errorMessage">
     <div class="alert alert-danger">
       {{ errorMessage }}
