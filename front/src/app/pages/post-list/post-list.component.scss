@@ -61,6 +61,14 @@
     .post-content p {
       line-height: 1.5em;
     }
+    .clamp-lines {
+      font-size: 1.3rem;
+      line-height: 1.5em;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
   }
 
   .topic-author {
