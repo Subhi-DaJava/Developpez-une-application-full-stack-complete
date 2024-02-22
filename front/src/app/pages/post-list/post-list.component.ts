@@ -11,6 +11,9 @@ import {Router} from "@angular/router";
 export class PostListComponent implements OnInit {
   posts: PostLight[] = [];
   errorMessage!: string;
+  isSorted = false;
+  originalPosts: PostLight[] = [];
+
   constructor(private postService: PostService,
               private router: Router) { }
 
@@ -29,6 +32,7 @@ export class PostListComponent implements OnInit {
     this.postService.getAllPostsSubscribedThemesChronologicallyByUser(username).subscribe({
       next: posts => {
         this.posts = posts;
+        this.originalPosts = [...posts];
       },
       error: err => {
         this.errorMessage = err.error;
@@ -38,5 +42,20 @@ export class PostListComponent implements OnInit {
 
   createPost() {
     this.router.navigate(['posts/form']).then();
+  }
+
+  sortByCreatedAt() {
+    if (this.isSorted) {
+      this.posts = [...this.originalPosts];
+      this.isSorted = false;
+    } else {
+    this.posts.sort((a, b) => {
+      if (!a.createdAt || !b.createdAt) {
+        return 1;
+      }
+      return Date.parse(a.createdAt.toString()) - Date.parse(b.createdAt.toString());
+    });
+    this.isSorted = true;
+    }
   }
 }

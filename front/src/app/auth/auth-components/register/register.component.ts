@@ -16,6 +16,7 @@ export class RegisterComponent {
               private router: Router) { }
 
   public onError = false;
+  public errorMessage = '';
 
   public form = this.formBuilder.group({
     email: [
@@ -40,11 +41,30 @@ export class RegisterComponent {
       ]
     ]
   });
+
+
   public onSubmit(): void {
+
+    if(this.form.invalid) {
+      this.onError = true;
+      this.errorMessage = '';
+      return;
+    }
+
     const registerRequest = this.form.value as RegisterRequest;
     this.authService.register(registerRequest).subscribe({
         next: (_: void) => this.router.navigate(['']),
-        error: _ => this.onError = true,
+        error: error => {
+          if(error.status === 409){
+            this.errorMessage = 'Error, User already exists with email or username !!';
+            this.onError = false;
+          } else if (error.status === 400) {
+            this.errorMessage = 'Error, Invalid email or password !!';
+            this.onError = false;
+          } else {
+            this.errorMessage = error.error;
+          }
+        }
       }
     );
   }

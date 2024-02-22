@@ -6,7 +6,7 @@
     <a class="nav-link" [routerLink]="['/posts']" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Articles</a>
     <a class="nav-link" [routerLink]="['/posts/topics']" routerLinkActive="active">Thèmes</a>
     <div class="profile-section">
-      <img [routerLink]="['/me']" src="assets/profil.png" class="profile-image" alt="Profile">
+      <img src="assets/profil.png" class="profile-image" [routerLink]="['/me']" routerLinkActive="active" #rla="routerLinkActive"alt="Profile" [ngClass]="{'active': rla.isActive}">
     </div>
   </nav>
   <mat-sidenav-container>
@@ -19,7 +19,7 @@
           <a class="nav-link" [routerLink]="['/posts/topics']" routerLinkActive="active">Thèmes</a>
         </div>
         <div class="profile-section">
-          <img [routerLink]="['/me']" src="assets/profil.png" class="profile-image" alt="Profile">
+         <img src="assets/profil.png" class="profile-image" [routerLink]="['/me']" routerLinkActive="active" #rla="routerLinkActive" alt="Profile" [ngClass]="{'active': rla.isActive}">
         </div>
       </nav>
     </mat-sidenav>

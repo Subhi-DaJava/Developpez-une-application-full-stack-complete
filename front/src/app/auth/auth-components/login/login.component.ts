@@ -20,7 +20,7 @@ export class LoginComponent {
               private router: Router,
               private sessionService: SessionService) { }
 
-  public form = this.formBuilder.group({
+  public loginForm = this.formBuilder.group({
     usernameOrEmail: [
       '',
       [
@@ -31,23 +31,32 @@ export class LoginComponent {
       '',
       [
         Validators.required,
-        Validators.minLength(8)
       ]
     ]
   });
 
   public onSubmit(): void {
-    const loginRequest = this.form.value as LoginRequest;
+
+    if (this.loginForm.invalid) {
+      this.onError = true;
+      this.errorMessage = '';
+      return;
+    }
+
+    const loginRequest = this.loginForm.value as LoginRequest;
     this.authService.login(loginRequest).subscribe({
       next: (response: SessionInformation) => {
         this.sessionService.logIn(response);
         this.router.navigate(['/posts']).then();
       },
       error: error => {
-        this.onError = true;
-        this.errorMessage = error.error;
-      },
+        if(error.status === 401){
+          this.errorMessage = 'Error, Credentials not correct !!';
+          this.onError = false;
+        } else {
+          this.errorMessage = error.error;
+        }
+      }
     });
   }
-
 }

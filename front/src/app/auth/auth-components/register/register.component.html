@@ -8,21 +8,41 @@
     <div>
       <label for="username">Nom d'utilisateur</label>
       <input id="username" type="text" formControlName="username" required>
+      <div *ngIf="form.controls.username.errors && (form.controls.username.dirty || form.controls.username.touched)" class="errors">
+        <p *ngIf="form.controls.username.errors">Username should be at least 3 characters long</p>
+      </div>
     </div>
 
     <div>
       <label for="email">Adresse e-mail</label>
       <input id="email" type="email" formControlName="email" required>
+      <div *ngIf="form.controls.email.errors && (form.controls.email.dirty || form.controls.email.touched)" class="errors">
+        <p *ngIf="form.controls.email.errors">Email should be a valid email address</p>
+      </div>
     </div>
 
     <div>
       <label for="password">Mot de passe</label>
       <input id="password" type="password" formControlName="password" required>
+      <div *ngIf="form.controls.password.errors && (form.controls.password.dirty || form.controls.password.touched)" class="errors">
+        <p *ngIf="form.controls.password.errors">Password should be at least 8 characters long!</p>
+      </div>
     </div>
-    <div *ngIf="onError">
-      Ce champ est obligatoire.
-    </div>
+
+   <div class="button-submit">
+     <button type="submit">S'inscrire</button>
+   </div>
+
   </form>
-  <button type="submit">S'inscrire</button>
+
+
+  <div *ngIf="onError" class="errors">
+    <p>Fields are mandatory !!</p>
+  </div>
+
+  <div *ngIf="errorMessage" class="errors">
+    {{ errorMessage }}
+  </div>
+
 </div>
 
