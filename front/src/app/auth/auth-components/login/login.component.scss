@@ -1,8 +1,8 @@
 .back-arrow {
   height: 1.5rem;
   position: absolute;
-  margin-left: 20px;
-  margin-top: 10px;
+  margin-left: 40px;
+  margin-top: 30px;
 }
 .center {
   display: flex;
@@ -10,21 +10,27 @@
   align-items: center;
   margin: 30px;
 
-  form {
-    width: 250px;
-  }
-  .vertical {
-    margin-top: 20px;
-    display: flex;
-    flex-direction: column;
-    .center-button {
-      margin-top: 20px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
+  h1 {
+    font-weight: 400;
+    font-size: 24px;
   }
 
+  form {
+    width: 250px;
+
+    .vertical {
+      margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+
+      .center-button {
+        margin-top: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+  }
   input {
     margin-bottom: 10px;
     border: 1px solid #000;
@@ -34,15 +40,19 @@
 
   label {
     margin-top: 10px;
+    font-weight: 400;
+    font-size: 16px;
   }
   button {
     margin-top: 20px;
-    background-color: #795dc7;
-    color: white;
-    width: 50%;
+    background-color: #7763C5;
+    width: 139px;
+    height: 40px;
     border-radius: 8px;
+    font-size: 16px;
+    font-weight: 700;
+    color: #FFFFFF;
   }
-
 }
 
 .errors {
@@ -56,15 +66,9 @@
 }
 @media (max-width: 767px) {
 
-  .center {
-    margin-top: 110px;
-  }
-  hr {
-    display: none;
-  }
   .back-arrow {
     position: fixed;
-    top: -5px;
+    top: 20px;
     left: 20px;
   }
 }

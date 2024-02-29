@@ -1,8 +1,8 @@
 .back-arrow {
   height: 1.5rem;
   position: absolute;
-  margin-left: 20px;
-  margin-top: 10px;
+  margin-left: 40px;
+  margin-top: 30px;
 }
 .container {
   padding-top: 30px;
@@ -56,13 +56,9 @@
 
 @media (max-width: 767px) {
 
-  hr {
-    display: none;
-  }
-
   .container {
     width: 100%;
-    margin-top: 80px;
+    padding: 0;
     .user-form {
       width: 50%;
     }
@@ -70,7 +66,7 @@
 
   .back-arrow {
     position: fixed;
-    top: -5px;
+    top:  20px;
     left: 20px;
   }
 

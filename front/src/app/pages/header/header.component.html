@@ -1,19 +1,19 @@
 <div class="header">
   <div class="logo-image">
-    <img src="assets/logo_p6.png" class="logo" alt="Logo">
+    <img src="assets/logo-header.png" class="logo" alt="Logo">
   </div>
-  <nav class="nav-large" *ngIf="isLoggedIn">
+  <nav class="nav-large" *ngIf="isLoggedIn" aria-label="Related links">
     <a class="nav-link" [routerLink]="['/posts']" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Articles</a>
     <a class="nav-link" [routerLink]="['/posts/topics']" routerLinkActive="active">Thèmes</a>
     <div class="profile-section">
-      <img src="assets/profil.png" class="profile-image" [routerLink]="['/me']" routerLinkActive="active" #rla="routerLinkActive"alt="Profile" [ngClass]="{'active': rla.isActive}">
+      <img src="assets/profil.png" class="profile-image" [routerLink]="['/me']" routerLinkActive="active" #rla="routerLinkActive" alt="Profile" [ngClass]="{'active': rla.isActive}">
     </div>
   </nav>
-  <mat-sidenav-container>
+  <mat-sidenav-container *ngIf="isLoggedIn">
     <mat-sidenav mode="over" position="end" class="burger-menu" [opened]="isMenuOpen" (click)="toggleMenu()">
       <button mat-icon-button>
         <mat-icon>close</mat-icon></button>
-      <nav class="nav-small" *ngIf="isLoggedIn">
+      <nav class="nav-small" aria-label="Site menu">
         <div class="nav-link-items">
           <a class="nav-link" [routerLink]="['/posts']" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Articles</a>
           <a class="nav-link" [routerLink]="['/posts/topics']" routerLinkActive="active">Thèmes</a>

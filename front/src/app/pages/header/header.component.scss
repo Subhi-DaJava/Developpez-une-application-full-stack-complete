@@ -1,15 +1,17 @@
 .header {
-  padding: 20px;
+  padding: 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 80px;
-  img {
-    width: 8%;
+  height: 94px;
+  border: 1px solid #000000;
+  .logo-image {
+    img {
+      width: 140px;
+      height: 81px;
+    }
   }
-  .logo {
-    width: 25%;
-  }
+
   font-size: 1.3rem;
 }
 
@@ -17,17 +19,6 @@
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  .profile-image {
-    width: 50px;
-    height: 50px;
-  }
-  .logo, .nav-link, .profile-image {
-    margin: 15px;
-  }
-  .nav-link {
-    margin-right: 15px;
-  }
-
   .profile-image {
     border-radius: 50%;
     width: 80%;
@@ -40,6 +31,12 @@
       height: 100%;
       object-fit: cover;
     }
+  }
+  .logo, .nav-link, .profile-image {
+    margin: 15px;
+  }
+  .nav-link {
+    margin-right: 15px;
   }
 }
 
@@ -80,59 +77,62 @@ mat-sidenav-container {
 
 @media (max-width: 767px) {
   .header {
+    margin-top: 90px;
+
     width: 100%;
     flex-direction: column;
     align-items: center;
-  }
-
-  .logo-image {
-    .logo {
-      width: 100%;
-      max-width: 400px;
+    justify-content: center;
+    border: none;
+    height: 180px;
+    .logo-image {
+      .logo {
+        width: 350px;
+        height: 170px;
+      }
     }
-  }
-  .nav-large {
-    display: none;
-  }
+    .nav-large {
+      display: none;
+    }
 
-  mat-sidenav-container {
-    margin-right: 20px;
-    display: flex;
-    .burger-menu {
-      .nav-small {
-        .nav-link {
-          margin: 10px;
-        }
-        .nav-link-items {
-          margin-top: 50px;
+    mat-sidenav-container {
+      margin-right: 20px;
+      display: flex;
+      .burger-menu {
+        .nav-small {
+          .nav-link {
+            margin: 10px;
+          }
+          .nav-link-items {
+            margin-top: 50px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+          }
+
           display: flex;
           flex-direction: column;
-          align-items: center;
-        }
-
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        align-items: flex-end;
-        margin-right: 10px;
-        .profile-section {
-          margin-bottom: 10px;
-          img {
-            width: 80px;
-            height: 60px;
+          justify-content: space-between;
+          align-items: flex-end;
+          margin-right: 10px;
+          .profile-section {
+            margin-bottom: 10px;
+            img {
+              width: 80px;
+              height: 60px;
+            }
           }
-        }
 
-        position: fixed;
-        top: 0;
-        right: 0;
-        width: 200px;
-        height: 100%;
-        transition: width 0s ease;
-        background-color: #f1f1f1;
+          position: fixed;
+          top: 0;
+          right: 0;
+          width: 200px;
+          height: 100%;
+          transition: width 0s ease;
+          background-color: #f1f1f1;
+        }
       }
     }
   }
-
 }
 
