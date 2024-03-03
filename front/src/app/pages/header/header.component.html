@@ -1,4 +1,4 @@
-<div class="header">
+<div class="header" [ngClass]="{'logged-in': isLoggedIn, 'not-logged-in': !isLoggedIn}">
   <div class="logo-image">
     <img src="assets/logo-header.png" class="logo" alt="Logo">
   </div>
@@ -6,11 +6,11 @@
     <a class="nav-link" [routerLink]="['/posts']" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Articles</a>
     <a class="nav-link" [routerLink]="['/posts/topics']" routerLinkActive="active">Thèmes</a>
     <div class="profile-section">
-      <img src="assets/profil.png" class="profile-image" [routerLink]="['/me']" routerLinkActive="active" #rla="routerLinkActive" alt="Profile" [ngClass]="{'active': rla.isActive}">
+      <img src="assets/profil.png" class="profile-image" [routerLink]="['/me']" routerLinkActive="active" alt="Profile">
     </div>
   </nav>
   <mat-sidenav-container *ngIf="isLoggedIn">
-    <mat-sidenav mode="over" position="end" class="burger-menu" [opened]="isMenuOpen" (click)="toggleMenu()">
+    <mat-sidenav mode="over" position="end" class="burger-menu" [opened]="isMenuOpen" (click)="toggleMenu($event)">
       <button mat-icon-button>
         <mat-icon>close</mat-icon></button>
       <nav class="nav-small" aria-label="Site menu">
@@ -19,14 +19,16 @@
           <a class="nav-link" [routerLink]="['/posts/topics']" routerLinkActive="active">Thèmes</a>
         </div>
         <div class="profile-section">
-         <img src="assets/profil.png" class="profile-image" [routerLink]="['/me']" routerLinkActive="active" #rla="routerLinkActive" alt="Profile" [ngClass]="{'active': rla.isActive}">
+         <img src="assets/profil.png" class="profile-image" [routerLink]="['/me']" routerLinkActive="active" alt="Profile">
         </div>
       </nav>
     </mat-sidenav>
     <mat-sidenav-content>
-      <button mat-icon-button class="burger-menu" (click)="toggleMenu()">
+      <button mat-icon-button class="burger-menu" (click)="toggleMenu($event)">
         <mat-icon>menu</mat-icon>
       </button>
     </mat-sidenav-content>
   </mat-sidenav-container>
 </div>
+
+

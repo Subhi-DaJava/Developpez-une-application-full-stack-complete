@@ -32,7 +32,7 @@ export class PostListComponent implements OnInit {
     this.postService.getAllPostsSubscribedThemesChronologicallyByUser(username).subscribe({
       next: posts => {
         this.posts = posts;
-        this.originalPosts = [...posts];
+        this.originalPosts = posts ? [...posts] : [];
       },
       error: err => {
         this.errorMessage = err.error;
@@ -49,13 +49,13 @@ export class PostListComponent implements OnInit {
       this.posts = [...this.originalPosts];
       this.isSorted = false;
     } else {
-    this.posts.sort((a, b) => {
-      if (!a.createdAt || !b.createdAt) {
-        return 1;
-      }
-      return Date.parse(a.createdAt.toString()) - Date.parse(b.createdAt.toString());
-    });
-    this.isSorted = true;
+      this.posts.sort((a, b) => {
+        if (!a.createdAt || !b.createdAt) {
+          return 1;
+        }
+        return Date.parse(a.createdAt.toString()) - Date.parse(b.createdAt.toString());
+      });
+      this.isSorted = true;
     }
   }
 }

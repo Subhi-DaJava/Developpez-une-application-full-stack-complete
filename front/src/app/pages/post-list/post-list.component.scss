@@ -9,17 +9,15 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    div {
+    .sort-arrow {
       display: flex;
       align-items: center;
       justify-content: center;
     }
     p {
       font-size: 1.5rem;
-      font-weight: bold;
-    }
-    img {
-      height: 40px;
+      font-weight: 700;
+      margin-right: 15px;
     }
   }
   .create-post-button {
@@ -29,10 +27,12 @@
       height: 20px;
       line-height: 20px;
       text-align: center;
+      font-size: 21px;
+      font-weight: 700;
     }
     margin-left: 50px;
     margin-top: 20px;
-    background-color: #795dc7;
+    background-color: #7763C5;
     color: white;
     padding: 10px 20px;
 
@@ -65,7 +65,7 @@
       font-size: 1.3rem;
       line-height: 1.5em;
       display: -webkit-box;
-      -webkit-line-clamp: 2;
+      -webkit-line-clamp: 5;
       -webkit-box-orient: vertical;
       overflow: hidden;
     }
@@ -110,18 +110,6 @@
   }
 }
 
-::ng-deep app-header .header {
-  @media (max-width: 767px) {
-    padding: 0 !important;
-    align-items: end !important;
-    justify-content: center !important;
-    .logo-image {
-      width: 30%;
-      position: absolute;
-      left: 3%;
-    }
-  }
-}
 
 
 

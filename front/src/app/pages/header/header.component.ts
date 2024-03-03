@@ -19,8 +19,13 @@ export class HeaderComponent implements OnInit {
     const token = this.sessionService.sessionInformation?.token;
     this.isLoggedIn = sessionStorage.getItem('token') !== null && token !== null;
   }
-  toggleMenu() {
+  toggleMenu(event: Event) {
+    event.stopPropagation();
     this.isMenuOpen = !this.isMenuOpen;
     console.log('Menu status: ', this.isMenuOpen);
+  }
+
+  closeMenu() {
+    this.isMenuOpen = false;
   }
 }

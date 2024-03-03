@@ -18,18 +18,3 @@ app-topic {
   }
 }
 
-::ng-deep app-header .header {
-  @media (max-width: 767px) {
-    padding: 0 !important;
-    align-items: end !important;
-    justify-content: center !important;
-    .logo-image {
-      width: 30%;
-      position: absolute;
-      left: 3%;
-    }
-    .nav-small {
-      width: 160px !important;
-    }
-  }
-}

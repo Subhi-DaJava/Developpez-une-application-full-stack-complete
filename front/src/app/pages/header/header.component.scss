@@ -18,9 +18,8 @@
 .nav-large {
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: center;
   .profile-image {
-    border-radius: 50%;
     width: 80%;
     height: 60px;
     margin: 10px;
@@ -53,48 +52,20 @@ a {
 }
 
 .profile-image.active {
-  border: 3px solid violet;
+  content: url('/assets/profil-route-active.png');
 }
 
 mat-sidenav-container {
   display: none;
-
-  .profile-image {
-    border-radius: 50%;
-    width: 80%;
-    height: 60px;
-    margin: 10px;
-    img {
-      padding: 0;
-      margin: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-  }
-
 }
-
 @media (max-width: 767px) {
-  .header {
-    margin-top: 90px;
 
+  .header.logged-in {
     width: 100%;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    border: none;
-    height: 180px;
-    .logo-image {
-      .logo {
-        width: 350px;
-        height: 170px;
-      }
-    }
+    height: 62px;
     .nav-large {
       display: none;
     }
-
     mat-sidenav-container {
       margin-right: 20px;
       display: flex;
@@ -129,10 +100,35 @@ mat-sidenav-container {
           width: 200px;
           height: 100%;
           transition: width 0s ease;
-          background-color: #f1f1f1;
+          background-color: #FFFFFF;
         }
       }
     }
   }
-}
 
+  .header.not-logged-in {
+    margin-top: 90px;
+
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    height: 180px;
+
+    .logo-image {
+      .logo {
+        width: 350px;
+        height: 170px;
+      }
+    }
+
+    .nav-large {
+      display: none;
+    }
+
+    mat-sidenav-container {
+      display: none;
+    }
+  }
+}
