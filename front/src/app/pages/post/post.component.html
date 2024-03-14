@@ -18,7 +18,7 @@
 
     <div class="comment-container">
       <hr>
-      <h2>Commentaires</h2>
+      <div class="title-commentaires"><h2>Commentaires</h2></div>
       <div class="comments-card">
         <div class="comments">
           <div *ngFor="let comment of post.comments" class="comment-line">
@@ -31,20 +31,22 @@
           </div>
         </div>
       </div>
-
-      <div class="commentForm" *ngIf="commentForm">
-        <form [formGroup]="commentForm" (ngSubmit)="createComment()">
-          <div class="form-group comment-input">
-            <textarea formControlName="content" placeholder="Écrivez ici votre commentaire" rows="5"></textarea>
-            <button type="submit" [disabled]="commentForm.invalid">
-              <img src="assets/send-icon.png" alt="Envoyer">
-            </button>
-          </div>
-        </form>
-      </div>
       <div class="error-message" *ngIf="errorMessage">
         {{ errorMessage }}
       </div>
     </div>
   </div>
+
+</div>
+
+<div class="commentForm" *ngIf="commentForm">
+  <form [formGroup]="commentForm" (ngSubmit)="createComment()">
+    <div class="form-group comment-input">
+      <div class="text-area"><textarea formControlName="content" placeholder="Écrivez ici votre commentaire" rows="5"></textarea></div>
+      <div class="send-submit">
+        <button type="submit" [disabled]="commentForm.invalid">
+          <img src="assets/send-icon.png" alt="Envoyer">
+        </button></div>
+    </div>
+  </form>
 </div>

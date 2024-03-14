@@ -11,8 +11,6 @@
   </nav>
   <mat-sidenav-container *ngIf="isLoggedIn">
     <mat-sidenav mode="over" position="end" class="burger-menu" [opened]="isMenuOpen" (click)="toggleMenu($event)">
-      <button mat-icon-button>
-        <mat-icon>close</mat-icon></button>
       <nav class="nav-small" aria-label="Site menu">
         <div class="nav-link-items">
           <a class="nav-link" [routerLink]="['/posts']" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Articles</a>
@@ -23,8 +21,8 @@
         </div>
       </nav>
     </mat-sidenav>
-    <mat-sidenav-content>
-      <button mat-icon-button class="burger-menu" (click)="toggleMenu($event)">
+    <mat-sidenav-content class="mat-side-content-rule">
+      <button mat-icon-button class="burger-menu-button" (click)="toggleMenu($event)">
         <mat-icon>menu</mat-icon>
       </button>
     </mat-sidenav-content>

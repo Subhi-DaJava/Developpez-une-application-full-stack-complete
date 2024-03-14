@@ -20,20 +20,20 @@
 
     input {
       width: 100%;
-      padding: 10px;
-      margin-bottom: 20px;
+      padding: .63rem;
+      margin-bottom: 1.3rem;
       border: 1px solid #000;
-      border-radius: 5px;
+      border-radius: .3rem;
     }
   }
 
   button {
-    padding: 10px 25px;
-    background-color: #795dc7;
+    padding: .63rem 1.6rem;
+    background-color: #7763C5;
     color: white;
     border: none;
     border-radius: 8px;
-    font-weight: bold;
+    font-weight: 700;
     font-size: 1.1rem;
   }
   .button-submit {
@@ -49,7 +49,7 @@
     align-items: center;
     width: 100%;
     color: red;
-    margin: 15px auto;
+    margin: 1rem auto;
     font-weight: bold;
   }
 }
@@ -66,8 +66,8 @@
 
   .back-arrow {
     position: fixed;
-    top:  20px;
-    left: 20px;
+    top:  1.3rem;
+    left: 1.3rem;
   }
 
 }

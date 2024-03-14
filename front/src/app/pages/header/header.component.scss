@@ -1,9 +1,9 @@
 .header {
-  padding: 10px;
+  padding: 0.63rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 94px;
+  height: 6rem;
   border: 1px solid #000000;
   .logo-image {
     img {
@@ -19,10 +19,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-right: 1.5rem;
   .profile-image {
     width: 80%;
-    height: 60px;
-    margin: 10px;
+    height: 3.8rem;
     img {
       padding: 0;
       margin: 0;
@@ -32,16 +32,18 @@
     }
   }
   .logo, .nav-link, .profile-image {
-    margin: 15px;
+    margin: 1rem;
   }
   .nav-link {
-    margin-right: 15px;
+    margin-right: 1rem;
   }
 }
 
 .active {
   text-decoration: underline;
-  color: violet;
+  color: #6C5CCF;
+  font-weight: 400;
+  font-size: 1.3rem;
 }
 
 a {
@@ -54,28 +56,26 @@ a {
 .profile-image.active {
   content: url('/assets/profil-route-active.png');
 }
-
 mat-sidenav-container {
   display: none;
 }
 @media (max-width: 767px) {
 
   .header.logged-in {
-    width: 100%;
-    height: 62px;
+    height: 4rem;
     .nav-large {
       display: none;
     }
     mat-sidenav-container {
-      margin-right: 20px;
+      margin-right: .63rem;
       display: flex;
       .burger-menu {
         .nav-small {
           .nav-link {
-            margin: 10px;
+            margin: .63rem;
           }
           .nav-link-items {
-            margin-top: 50px;
+            margin-top: 3rem;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -85,41 +85,55 @@ mat-sidenav-container {
           flex-direction: column;
           justify-content: space-between;
           align-items: flex-end;
-          margin-right: 10px;
+
           .profile-section {
-            margin-bottom: 10px;
+            margin-bottom: .63rem;
             img {
-              width: 80px;
-              height: 60px;
+              width: 5rem;
+              height: 4rem;
             }
           }
 
           position: fixed;
           top: 0;
           right: 0;
-          width: 200px;
+          width: 12.5rem;
           height: 100%;
           transition: width 0s ease;
           background-color: #FFFFFF;
         }
+
+      }
+      .material-icons {
+        font-size: 2.5rem;
+      }
+    }
+    .mat-side-content-rule {
+      mat-icon {
+        width: 100%;
+      }
+
+      .mat-button-focus-overlay {
+        opacity: 0;
+
       }
     }
   }
 
   .header.not-logged-in {
-    margin-top: 90px;
+    margin-top: 6rem;
 
     width: 100%;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     border: none;
-    height: 180px;
+    height: 11rem;
 
     .logo-image {
       .logo {
-        width: 350px;
-        height: 170px;
+        width: 22rem;
+        height: 11rem;
       }
     }
 
