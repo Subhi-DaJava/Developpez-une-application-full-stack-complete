@@ -15,6 +15,11 @@ import org.springframework.web.bind.annotation.*;
 public class CommentController {
     private final ICommentService commentService;
 
+    /**
+     * Create a comment
+     * @param commentDto CommentDto
+     * @return ResponseEntity with the created comment(commentDto) and status code 201
+     */
     @PostMapping
     public ResponseEntity<CommentDto> createComment(@RequestBody CommentDto commentDto) {
         CommentDto commentDtoSaved = commentService.createComment(commentDto);

@@ -12,7 +12,6 @@ import java.util.List;
 
 @Mapper(componentModel = "spring")
 public interface PostMapper {
-
     @Mapping(source ="user.username" , target = "authorUsername")
     @Mapping(source = "post.id", target = "postId")
     CommentDto commentToCommentDto(Comment comment);
@@ -21,8 +20,6 @@ public interface PostMapper {
     @Mapping(source = "user.username", target = "authorUsername")
     @Mapping(target = "comments", expression = "java(post.getComments() != null ? commentsToCommentDtos(post.getComments()) : new ArrayList<>())")
     PostDto postToPostDto(Post post);
-
-    List<PostDto> postsToPostDtos(List<Post> posts);
 
     default List<CommentDto> commentsToCommentDtos(List<Comment> comments) {
         return comments.stream().map(this::commentToCommentDto).toList();

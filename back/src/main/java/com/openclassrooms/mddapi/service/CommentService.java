@@ -28,6 +28,11 @@ public class CommentService implements ICommentService {
     private final PostRepository postRepository;
     private final CommentMapper commentMapper;
 
+    /**
+     * Create a comment
+     * @param commentDto comment to create
+     * @return created comment(dto)
+     */
     @Override
     public CommentDto createComment(CommentDto commentDto) {
         if(commentDto.getContent() == null ||

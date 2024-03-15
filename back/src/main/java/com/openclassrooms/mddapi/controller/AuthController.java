@@ -29,6 +29,11 @@ public class AuthController {
     private final AuthenticationManager authenticationManager;
     private final UserService userService;
 
+    /**
+     * Login endpoint
+     * @param authRequest AuthRequest
+     * @return ResponseEntity with the generated token
+     */
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody AuthRequest authRequest) {
         Authentication authentication = authenticationManager
@@ -49,6 +54,11 @@ public class AuthController {
         return ResponseEntity.ok(jwtToken);
     }
 
+     /**
+     * Register endpoint
+     * @param userResponse UserRequest
+     * @return ResponseEntity with the created user
+     */
     @PostMapping("/register")
     ResponseEntity<?> register(@RequestBody UserRequest userResponse) {
         UserResponse userCreated = userService.addUser(userResponse);

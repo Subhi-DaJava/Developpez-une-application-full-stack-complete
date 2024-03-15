@@ -53,7 +53,11 @@ export class RegisterComponent {
 
     const registerRequest = this.form.value as RegisterRequest;
     this.authService.register(registerRequest).subscribe({
-        next: (_: void) => this.router.navigate(['']),
+        next: (_: void) => {
+          this.router.navigate(['']).then();
+          this.errorMessage = '';
+          this.onError = false;
+        },
         error: error => {
           if(error.status === 409){
             this.errorMessage = 'Error, User already exists with email or username !!';

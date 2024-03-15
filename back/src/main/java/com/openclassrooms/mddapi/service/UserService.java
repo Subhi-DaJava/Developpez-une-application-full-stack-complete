@@ -26,6 +26,11 @@ public class UserService implements IUserService {
     private final UserMapper userMapper;
     private final PasswordEncoder passwordEncoder;
 
+    /**
+     * Get user by username
+     * @param username username
+     * @return user (userResponse, dto)
+     */
     @Override
     public UserResponse getUserByUserName(String username) {
         User user = retrieveUserWithTopicsByUsername(username);
@@ -36,6 +41,11 @@ public class UserService implements IUserService {
         return userResponse;
     }
 
+    /**
+     * Add a user
+     * @param userRequest user's info to add
+     * @return added user (userResponse, dto)
+     */
     @Override
     public UserResponse addUser(UserRequest userRequest) {
 
@@ -71,6 +81,13 @@ public class UserService implements IUserService {
         return userResponse;
     }
 
+    /**
+     * Update a user
+     * @param username username
+     * @param userRequest user's info to update
+     * @throws UsernameAlreadyExistingException if username already exists except old username of user
+     * @throws EmailAlreadyExistingException if email already exists except old email of user
+     */
     @Override
     public void updateUser(String username, UserRequest userRequest) throws UsernameAlreadyExistingException, EmailAlreadyExistingException {
         User userToUpdate = retrieveUserByUsername(username);

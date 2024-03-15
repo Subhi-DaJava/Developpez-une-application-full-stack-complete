@@ -5,6 +5,10 @@ import org.passay.*;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * Utility class to validate password: length min 8, at least one digit, at least one lowercase letter, at least one uppercase and at least one special character
+ */
+
 public class PasswordValidatorUtil {
 
     // Private constructor to prevent instantiation

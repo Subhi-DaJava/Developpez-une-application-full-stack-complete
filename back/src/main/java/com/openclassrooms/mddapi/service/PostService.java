@@ -31,6 +31,11 @@ public class PostService implements IPostService {
 	private final UserRepository userRepository;
 	private final PostMapper postMapper;
 
+	/**
+	 * Create a post
+	 * @param postDto post to create
+	 * @return created post(dto)
+	 */
 	@Override
 	public PostDto createPost(PostDto postDto) {
 		if(postDto.getAuthorUsername() == null ||
@@ -71,6 +76,11 @@ public class PostService implements IPostService {
 		return topicRepository.findByName(topicName).orElseThrow(() -> new ResourceNotFoundException("Topic not found with name:{%s} ".formatted(topicName)));
 	}
 
+	/**
+	 * Retrieve all posts from subscribed topics
+	 * @param username user's username (String)
+	 * @return list of posts(dto) from subscribed topics
+	 */
 	@Override
 	public List<PostDtoLight> getPostsFromSubscribedThemesChronologically(String username) {
 		User user = retrieveUserByUsername(username);
@@ -101,6 +111,11 @@ public class PostService implements IPostService {
 
 	}
 
+	/**
+	 * Retrieve a post by its id
+	 * @param postId post's id (Long)
+	 * @return post(dto)
+	 */
 	@Override
 	public PostDto getPostById(Long postId) {
 

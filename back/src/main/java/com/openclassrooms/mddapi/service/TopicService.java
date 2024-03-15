@@ -40,6 +40,11 @@ public class TopicService implements ITopicService {
 		return topicDtoList;
 	}
 
+	/**
+	 * Subscribe to a topic
+	 * @param topicName topic name
+	 * @param username username of the user
+	 */
 	@Override
 	public void subscribeToTopic(String topicName, String username) {
 		if(topicName == null || topicName.isEmpty() || username == null || username.isEmpty()) {
@@ -59,6 +64,11 @@ public class TopicService implements ITopicService {
 
 	}
 
+	/**
+	 * Unsubscribe to a topic
+	 * @param topicName topic name
+	 * @param username username of the user
+	 */
 	@Override
 	public void unsubscribeToTopic(String topicName, String username) {
 		if(topicName == null || topicName.isEmpty() || username == null || username.isEmpty()) {

@@ -24,7 +24,7 @@
       <label for="password">Mot de passe</label>
       <input id="password" type="password" formControlName="password" required>
       <div *ngIf="form.controls.password.errors && (form.controls.password.dirty || form.controls.password.touched)" class="errors">
-        <p *ngIf="form.controls.password.errors">Password should be at least 8 characters long!</p>
+        <p *ngIf="form.controls.password.errors">Password should be at least 8 chars, 1 digit, 1 lowercase, 1 uppercase & 1 special char !!</p>
       </div>
     </div>
 

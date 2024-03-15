@@ -80,10 +80,18 @@ export class UserComponent implements OnInit {
     const username = this.user.username;
     this.userService.updateUser(userUpdate, username).subscribe({
       next: data => {
-        sessionStorage.setItem('username', userUpdate.username);
+       sessionStorage.setItem('username', userUpdate.username);
+       this.getUser();
+       this.initUserProfileForm(this.user);
+       this.errorMessage = '';
+
       },
       error: (err: any) => {
-        this.errorMessage = err.error;
+        if(err.status === 400) {
+          this.errorMessage = "Error, remove your password if you don't want to update, else Password should be at least 8 chars, 1 digit, 1 lowercase, 1 uppercase & 1 special char!!";
+          return;
+        }
+          this.errorMessage = err.error;
       }
     });
   }

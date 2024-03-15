@@ -24,7 +24,9 @@
           </div>
         </form>
       </div>
-
+      <div *ngIf="errorMessage"  class="error_message">
+        {{ errorMessage }}
+      </div>
     </div>
   </div>
 
@@ -42,6 +44,5 @@
     </div>
   </div>
 </div>
-<div *ngIf="errorMessage">
-  <h3>{{errorMessage}}</h3>
-</div>
+
+

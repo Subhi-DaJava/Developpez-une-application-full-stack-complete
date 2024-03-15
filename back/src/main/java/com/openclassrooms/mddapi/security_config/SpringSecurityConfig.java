@@ -42,6 +42,10 @@ public class SpringSecurityConfig {
         this.userDetailsService = userDetailsService;
     }
 
+    /**
+     * This method is used to create an AuthenticationManager bean.
+     * @return an AuthenticationManager bean
+     */
     @Bean
     public AuthenticationManager authenticationManager() {
         var authProvider = new DaoAuthenticationProvider();
@@ -51,6 +55,12 @@ public class SpringSecurityConfig {
         return new ProviderManager(authProvider);
     }
 
+    /**
+     * This method is used to create a SecurityFilterChain bean.
+     * @param http the HttpSecurity object
+     * @return a SecurityFilterChain bean
+     * @throws Exception if an error occurs
+     */
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         return
@@ -91,6 +101,12 @@ public class SpringSecurityConfig {
         return new BCryptPasswordEncoder();
     }
 
+    /**
+     * This method is used to create a CorsConfigurationSource bean.
+     * It allows configuring CORS.
+     * CORS is a security feature that restricts what resources a web page can request from another domain.
+     * @return a CorsConfigurationSource bean
+     */
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         return request -> {

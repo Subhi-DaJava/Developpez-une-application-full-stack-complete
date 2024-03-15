@@ -21,6 +21,11 @@ import java.util.stream.Collectors;
 public class AuthService {
     private final JwtEncoder jwtEncoder;
 
+    /**
+     * Generate a JWT token from the authentication object
+     * @param authentication Authentication
+     * @return Generated JWT token
+     */
     public String generateToken(Authentication authentication) {
         Instant now = Instant.now();
 

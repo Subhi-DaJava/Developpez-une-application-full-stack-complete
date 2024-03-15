@@ -14,6 +14,12 @@ import org.springframework.stereotype.Service;
 public class CustomUserDetailsService implements UserDetailsService {
     private UserRepository userRepository;
 
+    /**
+     * Load user data from the database.
+     * @param usernameOrEmail the usernameOrEmail identifying the user whose data is required.
+     * @return UserDetails object containing the user data.
+     * @throws UsernameNotFoundException if the user is not found in the database.
+     */
     @Override
     public UserDetails loadUserByUsername(String usernameOrEmail) throws UsernameNotFoundException {
         AuthUser user =

@@ -15,6 +15,11 @@ import org.springframework.web.bind.annotation.*;
 public class UserController {
     private final UserService userService;
 
+    /**
+     * Get user by username
+     * @param username String
+     * @return ResponseEntity with the userResponse(dto)
+     */
     @GetMapping("/{username}")
     ResponseEntity<?> getUserById(@PathVariable(name = "username") String username) {
         UserResponse userResponse = userService.getUserByUserName(username);
@@ -26,11 +31,17 @@ public class UserController {
         return ResponseEntity.ok(userResponse);
     }
 
+
+    /**
+     * Update user
+     * @param username String
+     * @param userRequest UserRequest(user's info to update)
+     * @return ResponseEntity with status code 200
+     */
     @PutMapping("/{username}")
     ResponseEntity<?> updateUser(@PathVariable(name = "username") String username, @RequestBody UserRequest userRequest) {
         userService.updateUser(username, userRequest);
         log.info("User successfully updated in database");
         return ResponseEntity.ok().build();
     }
-
 }

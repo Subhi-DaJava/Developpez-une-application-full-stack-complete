@@ -17,6 +17,10 @@ import com.openclassrooms.mddapi.service.ITopicService;
 public class TopicController {
 	private final ITopicService topicService;
 
+	/**
+	 * Get all topics
+	 * @return ResponseEntity with the list of topicDto and status code 200 if the topics are found, otherwise status code 400
+	 */
 	@GetMapping()
 	public ResponseEntity<?> getAllTopics() {
 		List<TopicDto> topics = topicService.getTopics();
@@ -29,6 +33,11 @@ public class TopicController {
 		return ResponseEntity.ok(topics);
 	}
 
+	/**
+	 * Create a topic
+	 * @param topicName String, Username String
+	 * @return status code 200 if the user is successfully subscribed to the topic
+	 */
 	@PostMapping("/subscribe")
 	public ResponseEntity<?> subscribeToTopic(@RequestParam(name = "topicName") String topicName, @RequestParam(name = "username") String username) {
 		topicService.subscribeToTopic(topicName, username);
@@ -36,6 +45,11 @@ public class TopicController {
 		return ResponseEntity.ok().build();
 	}
 
+	/**
+	 * Unsubscribe to a topic
+	 * @param topicName String, Username String
+	 * @return status code 200 if the user is successfully unsubscribed to the topic
+	 */
 	@PostMapping("/unsubscribe")
 	public ResponseEntity<?> unsubscribeToTopic(@RequestParam(name = "topicName") String topicName, @RequestParam(name = "username") String username) {
 		topicService.unsubscribeToTopic(topicName, username);
