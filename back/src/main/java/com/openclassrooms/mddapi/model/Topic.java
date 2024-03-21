@@ -2,8 +2,6 @@ package com.openclassrooms.mddapi.model;
 
 import jakarta.persistence.*;
 import lombok.*;
-
-import java.io.Serial;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,8 +14,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Topic implements Serializable {
-	@Serial
-	private static final long serialVersionUID = 1905122041950251207L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "topic_id")
@@ -29,6 +26,7 @@ public class Topic implements Serializable {
 	@Column(nullable = false)
 	private String description;
 
+	@Builder.Default
 	@OneToMany(mappedBy = "topic")
 	private List<Post> posts = new ArrayList<>();
 }

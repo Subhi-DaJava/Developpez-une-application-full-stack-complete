@@ -20,6 +20,10 @@ public interface UserMapper {
     @Mapping(target = "topics", expression = "java(mapTopics(user.getTopics()))")
     UserResponse userToUserResponse(User user);
 
+    @Mapping(target = "id", ignore = true)
+    @Mapping(target = "posts", ignore = true)
+    @Mapping(target = "comments", ignore = true)
+    @Mapping(target = "topics", ignore = true)
     User userRequestToUser(UserRequest userRequest);
 
     /**

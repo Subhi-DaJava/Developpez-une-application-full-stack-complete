@@ -3,8 +3,6 @@ package com.openclassrooms.mddapi.model;
 
 import jakarta.persistence.*;
 import lombok.*;
-
-import java.io.Serial;
 import java.io.Serializable;
 import java.time.LocalDate;
 
@@ -17,9 +15,6 @@ import java.time.LocalDate;
 @Builder
 @ToString(exclude = {"user", "post"})
 public class Comment implements Serializable {
-
-	@Serial
-	private static final long serialVersionUID = 1905122041950251207L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
