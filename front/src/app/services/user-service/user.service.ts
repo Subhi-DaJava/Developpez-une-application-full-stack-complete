@@ -2,12 +2,13 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {User} from "../../models/user";
 import {UserUpdate} from "../../models/user-update";
+import {environment} from "../../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-  baseUrl = 'http://localhost:9000/user';
+  private baseUrl = environment.baseUrl + '/user';
   constructor(private http: HttpClient) { }
 
   getUser(username: string) {

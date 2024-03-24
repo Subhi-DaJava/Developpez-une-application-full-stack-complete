@@ -22,10 +22,5 @@ export class HeaderComponent implements OnInit {
   toggleMenu(event: Event) {
     event.stopPropagation();
     this.isMenuOpen = !this.isMenuOpen;
-    console.log('Menu status: ', this.isMenuOpen);
-  }
-
-  closeMenu() {
-    this.isMenuOpen = false;
   }
 }

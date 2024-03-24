@@ -2,12 +2,13 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpParams} from "@angular/common/http";
 import {Topic} from "../../models/topic";
 import {Observable} from "rxjs";
+import {environment} from "../../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
 })
 export class TopicService {
-  baseUrl = 'http://localhost:9000';
+  private baseUrl = environment.baseUrl;
 
   constructor(private http: HttpClient) { }
 

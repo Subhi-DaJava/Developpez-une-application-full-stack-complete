@@ -1,25 +1,60 @@
-# P6-Full-Stack-reseau-dev
+# Full-Stack-Projet-Monde-de-Dév
 
-## Front
+Cette application représente une solution Full Stack dédiée au réseau de développeurs (MDD). 
+Elle est développée en utilisant Angular pour le frontend et Spring Boot pour le backend.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.1.3.
+## Backend
+Le backend est développé en utilisant Spring Boot version 3.2.2 et Java 21.
 
-Don't forget to install your node_modules before starting (`npm install`).
+### Prérequis
+- Java 21
+- Maven 3.3+ (Dernière version recommandée)
+### Démarrage
+#### Choix 1
+Démarrer l'application
+Exécutez la commande suivante pour démarrer l'application Spring Boot :
 
-### Development server
+```bash 
+mvn spring-boot:run 
+```
+#### Choix 2
+Générer un fichier JAR exécutable
+Pour générer un fichier JAR exécutable, exécutez la commande suivante :
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+```bash 
+mvn clean package 
+```
+Ensuite, exécutez le fichier JAR généré :
 
-### Build
+```bash 
+java -jar target/mdd-api-0.0.1-SNAPSHOT.jar 
+```
+## Peupler la base de données
+Pour peupler la base de données, exécutez le script SQL fourni dans le répertoire `src/main/resources/sql-script/data.sql` avec MySQL Workbench ou avec la commande `mysql -u root -p < data.sql` (Remplacez root par votre nom d'utilisateur MySQL et entrez votre mote de passe MySQL).
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Frontend
+Cette application a été créée en utilisant Angular CLI (version 14.1.3).
 
-### Where to start
+### Prérequis 
+Avant de commencer, assurez-vous d'avoir Node.js (version plus récente) installé sur votre machine.
+Pour installer les dépendances nécessaires, exécutez la commande `npm install`.
 
-As you may have seen if you already started the app, a simple home page containing a logo, a title and a button is available. If you take a look at its code (in the `home.component.html`) you will see that an external UI library is already configured in the project.
+### Démarrage
+Pour démarrer le serveur de développement, utilisez la commande `ng serve` ou `npm run start`.
+Ensuite, ouvrez votre navigateur et accédez à http://localhost:4200/.
 
-This library is `@angular/material`, it's one of the most famous in the angular ecosystem. As you can see on their docs (https://material.angular.io/), it contains a lot of highly customizable components that will help you design your interfaces quickly.
+## Configuration de variables d'environnement
+Remplacez les variables d'environnement suivant dans le fichier application.properties :
 
-Note: I recommend to use material however it's not mandatory, if you prefer you can get ride of it.
+```bash 
+spring.datasource.username=${USERNAME}
+spring.datasource.password=${PASSWORD} 
+jwtKey=${MySecretKEY}
+ ```
+## Génération de la Javadoc
+Pour générer la Javadoc pour votre projet, exécutez la commande suivante :
 
-Good luck!
+```bash 
+mvn javadoc:javadoc 
+```
+La documentation Javadoc sera créée dans le répertoire target/site/apidocs/.

@@ -4,13 +4,14 @@ import {Observable} from "rxjs";
 import {LoginRequest} from "../login-register-request/login-request";
 import {SessionInformation} from "../../models/session-information";
 import {RegisterRequest} from "../login-register-request/register-request";
+import {environment} from "../../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  baseUrl = 'http://localhost:9000';
+  private baseUrl = environment.baseUrl;
 
   constructor(private http: HttpClient) { }
 

@@ -4,6 +4,7 @@ import { HomeComponent } from './pages/home/home.component';
 import {UnAuthGuard} from "./auth/gurards/un-auth.guard";
 import {AuthGuard} from "./auth/gurards/auth.guard";
 import {UserComponent} from "./pages/user/user.component";
+import {NotFoundComponent} from "./pages/not-found/not-found.component";
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -17,7 +18,10 @@ const routes: Routes = [
     loadChildren: () => import('./auth/resource-routing-modules/resource.module').then(m => m.ResourceModule) },
 
   { path: 'me', title: 'User-Profile', canActivate: [AuthGuard],
-    component: UserComponent }
+    component: UserComponent },
+
+  { path: '404', title: 'Not Found', component: NotFoundComponent},
+  { path: '**', redirectTo: '404' }
 ];
 
 @NgModule({
