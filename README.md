@@ -30,7 +30,7 @@ Générer un fichier JAR exécutable
 Pour générer un fichier JAR exécutable, exécutez la commande suivante :
 
 ```bash 
-mvn clean package 
+mvn clean install 
 ```
 Ensuite, exécutez le fichier JAR généré :
 
