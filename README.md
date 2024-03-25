@@ -9,6 +9,14 @@ Le backend est développé en utilisant Spring Boot version 3.2.2 et Java 21.
 ### Prérequis
 - Java 21
 - Maven 3.3+ (Dernière version recommandée)
+
+### Configuration de variables d'environnement
+Remplacez les variables d'environnement suivant dans le fichier application.properties :
+```bash 
+spring.datasource.username=${user_name}
+spring.datasource.password=${user_password} 
+jwtKey=${MySecretKEY}
+ ```
 ### Démarrage
 #### Choix 1
 Démarrer l'application
@@ -41,16 +49,8 @@ Pour installer les dépendances nécessaires, exécutez la commande `npm install
 
 ### Démarrage
 Pour démarrer le serveur de développement, utilisez la commande `ng serve` ou `npm run start`.
-Ensuite, ouvrez votre navigateur et accédez à http://localhost:4200/.
+Ensuite, ouvrez votre navigateur et accédez à http://localhost:4200.
 
-## Configuration de variables d'environnement
-Remplacez les variables d'environnement suivant dans le fichier application.properties :
-
-```bash 
-spring.datasource.username=${USERNAME}
-spring.datasource.password=${PASSWORD} 
-jwtKey=${MySecretKEY}
- ```
 ## Génération de la Javadoc
 Pour générer la Javadoc pour votre projet, exécutez la commande suivante :
 
