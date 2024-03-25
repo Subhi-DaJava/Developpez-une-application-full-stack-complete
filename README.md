@@ -4,11 +4,11 @@ Cette application représente une solution Full Stack dédiée au réseau de dé
 Elle est développée en utilisant Angular pour le frontend et Spring Boot pour le backend.
 
 ## Backend
-Le backend est développé en utilisant Spring Boot version 3.2.2 et Java 21.
+Le backend est développé en utilisant Spring Boot version `3.2.2` et Java `21`.
 
 ### Prérequis
-- Java 21
-- Maven 3.3+ (Dernière version recommandée)
+- `Java 21`
+- `Maven 3.3+` (Dernière version recommandée)
 
 ### Configuration de variables d'environnement
 Remplacez les variables d'environnement suivant dans le fichier application.properties :
@@ -41,7 +41,7 @@ java -jar target/mdd-api-0.0.1-SNAPSHOT.jar
 Pour peupler la base de données, exécutez le script SQL fourni dans le répertoire `src/main/resources/sql-script/data.sql` avec MySQL Workbench ou avec la commande `mysql -u root -p < data.sql` (Remplacez root par votre nom d'utilisateur MySQL et entrez votre mote de passe MySQL).
 
 ## Frontend
-Cette application a été créée en utilisant Angular CLI (version 14.1.3).
+Cette application a été créée en utilisant Angular CLI (version `14.1.3`).
 
 ### Prérequis 
 Avant de commencer, assurez-vous d'avoir Node.js (version plus récente) installé sur votre machine.
@@ -57,4 +57,4 @@ Pour générer la Javadoc pour votre projet, exécutez la commande suivante :
 ```bash 
 mvn javadoc:javadoc 
 ```
-La documentation Javadoc sera créée dans le répertoire target/site/apidocs/.
+La documentation Javadoc sera créée dans le répertoire `target/site/apidocs/`.
