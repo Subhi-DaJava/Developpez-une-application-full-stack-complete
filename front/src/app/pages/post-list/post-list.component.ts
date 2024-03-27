@@ -41,7 +41,7 @@ export class PostListComponent implements OnInit {
   }
 
   createPost() {
-    this.router.navigate(['posts/form']).then();
+    this.router.navigate(['resources/post/form']).then();
   }
 
   sortByCreatedAt() {

@@ -47,7 +47,7 @@ export class LoginComponent {
     this.authService.login(loginRequest).subscribe({
       next: (response: SessionInformation) => {
         this.sessionService.logIn(response);
-        this.router.navigate(['/posts']).then();
+        this.router.navigate(['/resources/posts']).then();
       },
       error: error => {
         if(error.status === 401){

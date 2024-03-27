@@ -3,8 +3,8 @@
     <img src="assets/logo-header.png" class="logo" alt="Logo">
   </div>
   <nav class="nav-large" *ngIf="isLoggedIn" aria-label="Related links">
-    <a class="nav-link" [routerLink]="['/posts']" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Articles</a>
-    <a class="nav-link" [routerLink]="['/posts/topics']" routerLinkActive="active">Thèmes</a>
+    <a class="nav-link" [routerLink]="['/resources/posts']" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Articles</a>
+    <a class="nav-link" [routerLink]="['/resources/topics']" routerLinkActive="active">Thèmes</a>
     <div class="profile-section">
       <img src="assets/profil.png" class="profile-image" [routerLink]="['/me']" routerLinkActive="active" alt="Profile">
     </div>
@@ -13,8 +13,8 @@
     <mat-sidenav mode="over" position="end" class="burger-menu" [opened]="isMenuOpen" (click)="toggleMenu($event)">
       <nav class="nav-small" aria-label="Site menu">
         <div class="nav-link-items">
-          <a class="nav-link" [routerLink]="['/posts']" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Articles</a>
-          <a class="nav-link" [routerLink]="['/posts/topics']" routerLinkActive="active">Thèmes</a>
+          <a class="nav-link" [routerLink]="['/resources/posts']" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Articles</a>
+          <a class="nav-link" [routerLink]="['/resources/topics']" routerLinkActive="active">Thèmes</a>
         </div>
         <div class="profile-section">
          <img src="assets/profil.png" class="profile-image" [routerLink]="['/me']" routerLinkActive="active" alt="Profile">

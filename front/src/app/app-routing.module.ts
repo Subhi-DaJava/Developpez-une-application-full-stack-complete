@@ -13,7 +13,7 @@ const routes: Routes = [
     canActivate: [UnAuthGuard],
     loadChildren: () => import('./auth/auth-routing-modules/auth.module').then(m => m.AuthModule) },
 
-  { path: 'posts', title: 'Post-list',
+  { path: 'resources', title: 'Post-list',
     canActivate: [AuthGuard],
     loadChildren: () => import('./auth/resource-routing-modules/resource.module').then(m => m.ResourceModule) },
 

@@ -21,7 +21,7 @@ public class UserController {
      * @return ResponseEntity with the userResponse(dto)
      */
     @GetMapping("/{username}")
-    ResponseEntity<?> getUserById(@PathVariable(name = "username") String username) {
+    ResponseEntity<?> getUserByUsername(@PathVariable(name = "username") String username) {
         UserResponse userResponse = userService.getUserByUserName(username);
         if(userResponse == null || userResponse.getUsername() == null) {
             log.error("User not found in database");

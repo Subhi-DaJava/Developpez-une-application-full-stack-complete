@@ -6,10 +6,10 @@ import {PostListComponent} from "../../pages/post-list/post-list.component";
 import {PostFormComponent} from "../../pages/post-form/post-form.component";
 
 const routes: Routes = [
-  { path: '', title: 'Posts', component: PostListComponent },
-  { path: 'detail/:id', title: 'Post Detail', component: PostComponent },
+  { path: 'posts', title: 'Posts', component: PostListComponent },
+  { path: 'post/detail/:id', title: 'Post Detail', component: PostComponent },
   { path: 'topics', title: 'Topics', component: TopicListComponent },
-  { path: 'form', title: 'Post Form', component: PostFormComponent },
+  { path: 'post/form', title: 'Post Form', component: PostFormComponent },
 ];
 
 @NgModule({
