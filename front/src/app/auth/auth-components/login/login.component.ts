@@ -53,6 +53,7 @@ export class LoginComponent {
         if(error.status === 401){
           this.errorMessage = 'Error, Credentials not correct !!';
           this.onError = false;
+          this.loginForm.reset();
         } else {
           this.errorMessage = error.error;
         }

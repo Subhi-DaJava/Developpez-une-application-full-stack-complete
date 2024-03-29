@@ -42,7 +42,6 @@ export class RegisterComponent {
     ]
   });
 
-
   public onSubmit(): void {
 
     if(this.form.invalid) {
@@ -65,6 +64,7 @@ export class RegisterComponent {
           } else if (error.status === 400) {
             this.errorMessage = 'Error, Invalid email or password !!';
             this.onError = false;
+            this.form.reset();
           } else {
             this.errorMessage = error.error;
           }

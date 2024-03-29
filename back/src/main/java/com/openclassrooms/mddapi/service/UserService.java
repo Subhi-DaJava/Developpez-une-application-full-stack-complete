@@ -112,16 +112,32 @@ public class UserService implements IUserService {
         userRepository.save(userToUpdate);
     }
 
+    /**
+     * Fetch user by username with topics
+     * @param username username of user
+     * @return user Entity
+     */
     private User retrieveUserWithTopicsByUsername(String username) {
         return userRepository.findWithTopicsByUsername(username)
                 .orElseThrow(() -> new ResourceNotFoundException("User not found with username:{%s} ".formatted(username)));
     }
 
+    /**
+     * Fetch user by username
+     * @param username username of user
+     * @return user Entity
+     */
     private User retrieveUserByUsername(String username) {
         return userRepository.findByUsername(username)
                 .orElseThrow(() -> new ResourceNotFoundException("User not found with username:{%s} ".formatted(username)));
     }
 
+    /**
+     * Check if the username is already taken
+     * @param userRequest userRequest
+     * @param userToUpdate userToUpdate
+     * @throws UsernameAlreadyExistingException if username already exists except old username of user
+     */
     private void isUsernameTaken(UserRequest userRequest, User userToUpdate) throws UsernameAlreadyExistingException {
         User existingUser = userRepository.findByUsername(userRequest.getUsername()).orElse(null);
 
@@ -131,6 +147,12 @@ public class UserService implements IUserService {
         }
     }
 
+    /**
+     * Check if email is already taken
+     * @param userRequest userRequest
+     * @param userToUpdate userToUpdate
+     * @throws EmailAlreadyExistingException if email already exists except old email of user
+     */
     private void isEmailTaken(UserRequest userRequest, User userToUpdate) throws EmailAlreadyExistingException {
         User existingUser = userRepository.findByEmail(userRequest.getEmail()).orElse(null);
 

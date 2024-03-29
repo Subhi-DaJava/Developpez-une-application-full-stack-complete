@@ -5,6 +5,7 @@ import {Router} from "@angular/router";
 import {PostLight} from "../../models/post-light";
 import {TopicService} from "../../services/topic-service/topic.service";
 import {Topic} from "../../models/topic";
+import {SessionService} from "../../services/session-service/session.service";
 
 @Component({
   selector: 'app-post-form',
@@ -20,6 +21,7 @@ export class PostFormComponent implements OnInit {
   constructor(private formBuilder: FormBuilder,
               private postService: PostService,
               private topicService: TopicService,
+              private sessionService: SessionService,
               private router: Router) { }
 
   ngOnInit(): void {
@@ -42,7 +44,7 @@ export class PostFormComponent implements OnInit {
 
   public createPost() {
     const post = this.postForm?.value as PostLight;
-    const username = sessionStorage.getItem('username');
+    const username = this.sessionService.getUsername();
 
     if (!username) {
       this.router.navigate(['/login']).then();
@@ -55,7 +57,7 @@ export class PostFormComponent implements OnInit {
         this.router.navigate(['posts']).then();
       },
       error: err => {
-        this.errorMessage = err.error;
+        this.handleError(err);
       }
     });
   }
@@ -66,10 +68,12 @@ export class PostFormComponent implements OnInit {
         this.topics = topics;
       },
       error: err => {
-        this.errorMessage = err.error;
+        this.handleError(err);
       }
     });
   }
 
-
+  private handleError(err: any) {
+    this.errorMessage = err.error;
+  }
 }

@@ -25,4 +25,16 @@ export class SessionService {
     return sessionStorage.getItem('token') && sessionStorage.getItem('token') !== null;
   }
 
+  public getUsername() {
+    return sessionStorage.getItem('username');
+  }
+
+  public updateUsername(username: string) {
+    sessionStorage.setItem('username', username);
+  }
+
+  public getToken() {
+    return sessionStorage.getItem('token');
+  }
+
 }

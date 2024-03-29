@@ -5,6 +5,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {CommentService} from "../../services/comment-service/comment.service";
 import {Comment} from "../../models/comment";
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {SessionService} from "../../services/session-service/session.service";
 @Component({
   selector: 'app-post',
   templateUrl: './post.component.html',
@@ -20,6 +21,7 @@ export class PostComponent implements OnInit {
               private activatedRoute: ActivatedRoute,
               private router: Router,
               private commentService: CommentService,
+              private sessionService: SessionService,
               private formBuilder: FormBuilder) {
     this.postId = +this.activatedRoute.snapshot.params['id'];
   }
@@ -40,7 +42,7 @@ export class PostComponent implements OnInit {
         this.post = post;
       },
       error: err => {
-        this.errorMessage = err.error;
+        this.handleError(err);
       }
     });
   }
@@ -53,7 +55,7 @@ export class PostComponent implements OnInit {
 
   createComment() {
     const comment = this.commentForm?.value as Comment;
-    const username = sessionStorage.getItem('username');
+    const username = this.sessionService.getUsername();
     if(!username) {
       this.router.navigate(['/login']).then();
       return;
@@ -67,9 +69,12 @@ export class PostComponent implements OnInit {
         this.commentForm?.reset();
       },
       error: err => {
-        this.errorMessage = err.error;
+        this.handleError(err);
       }
     });
   }
 
+  private handleError(err: any) {
+    this.errorMessage = err.error;
+  }
 }

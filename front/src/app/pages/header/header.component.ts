@@ -17,7 +17,7 @@ export class HeaderComponent implements OnInit {
 
   isLogged() {
     const token = this.sessionService.sessionInformation?.token;
-    this.isLoggedIn = sessionStorage.getItem('token') !== null && token !== null;
+    this.isLoggedIn = this.sessionService.getToken() !== null && token !== null;
   }
   toggleMenu(event: Event) {
     event.stopPropagation();

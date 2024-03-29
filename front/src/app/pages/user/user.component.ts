@@ -31,7 +31,7 @@ export class UserComponent implements OnInit {
   }
 
   getUser() {
-    const username = sessionStorage.getItem('username');
+    const username = this.sessionService.getUsername()
     if (!username) {
       this.errorMessage = "You must be logged in to see your posts";
       return;
@@ -43,7 +43,7 @@ export class UserComponent implements OnInit {
         this.initUserProfileForm(this.user);
       },
       error: (err: any) => {
-        this.errorMessage = err.error;
+        this.handleError(err);
       }
     });
   }
@@ -65,7 +65,7 @@ export class UserComponent implements OnInit {
         this.topics = this.topics.filter(topic => topic.name !== topicName);
       },
       error: (err: any) => {
-        this.errorMessage = err.error;
+        this.handleError(err);
       }
     });
   }
@@ -80,10 +80,10 @@ export class UserComponent implements OnInit {
     const username = this.user.username;
     this.userService.updateUser(userUpdate, username).subscribe({
       next: data => {
-       sessionStorage.setItem('username', userUpdate.username);
-       this.getUser();
-       this.initUserProfileForm(this.user);
-       this.errorMessage = '';
+        this.sessionService.updateUsername(userUpdate.username);
+        this.getUser();
+        this.initUserProfileForm(this.user);
+        this.errorMessage = '';
 
       },
       error: (err: any) => {
@@ -91,9 +91,13 @@ export class UserComponent implements OnInit {
           this.errorMessage = "Error, remove your password if you don't want to update, else Password should be at least 8 chars, 1 digit, 1 lowercase, 1 uppercase & 1 special char!!";
           return;
         }
-          this.errorMessage = err.error;
+        this.handleError(err);
       }
     });
+  }
+
+  private handleError(err: any) {
+    this.errorMessage = err.error;
   }
 
 }

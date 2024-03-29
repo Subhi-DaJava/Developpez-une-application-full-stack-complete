@@ -21,7 +21,6 @@ export class PostListComponent implements OnInit {
     this.getPosts();
   }
 
-
   getPosts() {
     const username = sessionStorage.getItem('username');
     if (!username) {

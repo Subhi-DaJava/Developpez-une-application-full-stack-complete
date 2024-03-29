@@ -14,6 +14,12 @@ import java.net.URI;
 public class GlobalExceptionHandler {
     static final String ERROR="error";
     static final String ERROR_ADDRESS="https://mdd.com/errors";
+
+    /**
+     * Handle IllegalArgumentException
+     * @param ex IllegalArgumentException
+     * @return Http Code Status 400 Bad Request
+     */
     @ExceptionHandler(IllegalArgumentException.class)
     public ProblemDetail handleIllegalArgumentException(IllegalArgumentException ex) {
         ProblemDetail problemDetail = ProblemDetail.forStatusAndDetail(HttpStatus.BAD_REQUEST, ex.getMessage());
@@ -24,6 +30,11 @@ public class GlobalExceptionHandler {
         return problemDetail;
     }
 
+    /**
+     * Handle FieldShouldNotBeEmptyException
+     * @param ex FieldShouldNotBeEmptyException
+     * @return Http Code Status 400 Bad Request
+     */
     @ExceptionHandler(FieldShouldNotBeEmptyException.class)
     public ProblemDetail handleFiledNotNullOrEmptyException(FieldShouldNotBeEmptyException ex){
         ProblemDetail problemDetail=ProblemDetail.forStatusAndDetail(HttpStatus.BAD_REQUEST,ex.getMessage());
@@ -33,6 +44,11 @@ public class GlobalExceptionHandler {
         return problemDetail;
     }
 
+    /**
+     * Handle ResourceNotFoundException
+     * @param ex ResourceNotFoundException
+     * @return Http Code Status 404 Isn't Found
+     */
     @ExceptionHandler(ResourceNotFoundException.class)
     public ProblemDetail handleResourceNotFoundException(ResourceNotFoundException ex){
         ProblemDetail problemDetail=ProblemDetail.forStatusAndDetail(HttpStatus.NOT_FOUND,ex.getMessage());
@@ -42,6 +58,11 @@ public class GlobalExceptionHandler {
         return problemDetail;
     }
 
+    /**
+     * Handle UsernameAlreadyExistingException
+     * @param ex UsernameAlreadyExistingException
+     * @return Http Code Status 409 Conflict
+     */
     @ExceptionHandler(UsernameAlreadyExistingException.class)
     public ProblemDetail usernameAlreadyExistingException(UsernameAlreadyExistingException ex) {
         ProblemDetail problemDetail = ProblemDetail.forStatusAndDetail(HttpStatus.CONFLICT, ex.getMessage());
@@ -51,6 +72,11 @@ public class GlobalExceptionHandler {
         return problemDetail;
     }
 
+    /**
+     * Handle EmailAlreadyExistingException
+     * @param ex EmailAlreadyExistingException
+     * @return Http Code Status 409 Conflict
+     */
     @ExceptionHandler(EmailAlreadyExistingException.class)
     public ProblemDetail emailAlreadyExistingException(EmailAlreadyExistingException ex) {
         ProblemDetail problemDetail = ProblemDetail.forStatusAndDetail(HttpStatus.CONFLICT, ex.getMessage());
@@ -60,6 +86,11 @@ public class GlobalExceptionHandler {
         return problemDetail;
     }
 
+    /**
+     * Handle UserAlreadySubscribeToTopicException
+     * @param ex UserAlreadySubscribeToTopicException
+     * @return Http Code Status 400 Bad Request
+     */
     @ExceptionHandler(UserAlreadySubscribeToTopicException.class)
     public ProblemDetail handleUserAlreadyExistsException(UserAlreadySubscribeToTopicException ex) {
         ProblemDetail errorDetail = ProblemDetail.forStatusAndDetail(HttpStatus.BAD_REQUEST, ex.getMessage());
@@ -69,6 +100,11 @@ public class GlobalExceptionHandler {
         return errorDetail;
     }
 
+    /**
+     * Handle UserNotSubscribeToTopicException
+     * @param ex UserNotSubscribeToTopicException
+     * @return Http Code Status 400 Bad Request
+     */
     @ExceptionHandler(UserNotSubscribeToTopicException.class)
     public ProblemDetail handleUserNotSubscribeToTopicException(UserNotSubscribeToTopicException ex) {
         ProblemDetail errorDetail = ProblemDetail.forStatusAndDetail(HttpStatus.BAD_REQUEST, ex.getMessage());
